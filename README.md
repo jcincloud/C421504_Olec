@@ -1,7 +1,7 @@
 # C421504_Olec
 富利源
-風格:白底、環保風
 
+風格:白底、環保風
 參考南寶樹脂(http://www.nanpao.com) 素材有綠樹 植栽、小朋友的圖(實驗室就不用)
 HB Fuller(http://www.hbfuller.com)
 Texyear(http://www.texyear.com.tw)
