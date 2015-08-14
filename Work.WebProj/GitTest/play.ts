@@ -3,8 +3,8 @@ var c: Date = new Date();
 console.log(c);
 var d: string = 'Hello!';
 
-var f: number = 1943;
+var f: number = 4321;
 var k: string = "ddd";
+var n: number = 1111;
 
-
-var n: number = 1943;
+console.log(f+n);
