@@ -5,3 +5,6 @@ var d: string = 'Hello!';
 
 var f: number = 1943;
 var k: string = "ddd";
+
+
+var n: number = 1943;
