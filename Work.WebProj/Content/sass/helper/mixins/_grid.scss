@@ -5,8 +5,6 @@
 //
 // Row
 @mixin row($inside) {
-    @extend .clearfix;
-
     @if($inside == true) {
         margin-left: -$gutter/2;
         margin-right: -$gutter/2;
@@ -35,9 +33,9 @@
     right: percentage($width);
 }
 
-@mixin make-col($class) {
+@mixin make-col($class: md) {
     @for $i from 1 through $columns {
-        @if($class == false) {
+        @if($class == md) {
             .col-#{$i} { width: percentage($i / $columns); }
         }
         @else {
@@ -45,3 +43,4 @@
         }
     }
 }
+

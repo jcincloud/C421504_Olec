@@ -245,6 +245,7 @@
     <None Include="Content\bootstrap\js\bootstrap.js" />
     <None Include="Content\bootstrap\js\bootstrap.min.js" />
     <None Include="Content\bootstrap\js\npm.js" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\Api\ProductBrandController.cs" />
     <Compile Include="Controllers\Api\RolesController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
@@ -257,7 +258,10 @@
     <Compile Include="Controllers\Api\ProductController.cs" />
     <Compile Include="Controllers\Api\GetActionController.cs" />
     <Compile Include="Controllers\Api\CustomerController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -972,6 +976,11 @@
     <Content Include="Scripts\src\jsx\w-index.jsx" />
     <Content Include="Scripts\src\jsx\t-VisitView.jsx" />
     <Content Include="Scripts\src\jsx\m-Stock_view.jsx" />
+    <Content Include="Views\News\list.cshtml" />
+    <Content Include="Views\News\Content.cshtml" />
+    <Content Include="Views\Products\Content.cshtml" />
+    <Content Include="Views\AboutUs\AboutUs.cshtml" />
+    <Content Include="Views\ContactUs\ContactUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

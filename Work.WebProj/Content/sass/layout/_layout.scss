@@ -1,17 +1,17 @@
 
 // wrapper
-$wrapper-bg:            #fff url(#{$img-path}/bg.gif) center 0 repeat-y !default;
+$wrapper-bg:            #fff !default;
 $content-spacing:       70px !default;
 
 // header
 $header-bg:             #315400 !default;
-$header-height:         395px !default;
+$header-height:         183px !default;
 
-$menu:                  (top, 55px), (right, 1.5%) !default;
+$menu:                  (top, 38px), (right, 1.5%) !default;
 $menu-link:             #C2D217 !default;
 $menu-link-hover:       #D5E8C2 !default;
 
-$banner-bg:             url(#{$img-path}/banner.png) center 0 no-repeat !default;
+$banner-bg:             url(#{$img-path}/banner.jpg) center 0 no-repeat !default;
 $banner-height:         270px !default;
 
 // footer
@@ -20,6 +20,7 @@ $footer-bg:             #E5E6DE !default;
 $goTop:                 (bottom, 10px), (right, 15px) !default;
 $footer-height2:        140px !default;
 $footer-contact-color:  #406947 !default;
+$copyright-color:       #E3E5DC !default;
 
 
 
@@ -27,15 +28,19 @@ $footer-contact-color:  #406947 !default;
 // -----------------------------------------------------------------------
 @if $grid-col-switch {
 
-    .container {
-        @extend %clearfix;
-        @include row;
+    // .container,
+    // .row {
+    // }
 
-        padding: 0 ($gutter / 2);
-    }
+    // .container {
+    //     @include row;
+
+    //     padding: 0 ($gutter / 2);
+    // }
 
     .row {
-        @include row(true);
+        @extend %clearfix;
+        // @include row(true);
         & + & {
             margin-top: $gutter;
         }
@@ -44,7 +49,7 @@ $footer-contact-color:  #406947 !default;
     [class*="col-"] {
         @extend .float-l;
 
-        padding: 0 ($gutter / 2);
+        padding: 0 $gutter;
 
         &:last-child {
             padding-right: 0;
@@ -59,7 +64,7 @@ $footer-contact-color:  #406947 !default;
 
 /*      layout
 -----------------------------------------------------------------------*/
-#wrapper, section, main {
+#wrapper, .wrap, section, main {
     position: relative;
     min-width: $min-width;
 }
@@ -68,7 +73,6 @@ $footer-contact-color:  #406947 !default;
 .wrap {
     @extend .text-left;
 
-    min-width: $min-width;
     max-width: $max-width;
     margin: 0 auto;
 }
@@ -144,12 +148,17 @@ h1 {
         padding-top: 24px;
         width: 135px;
 
+        $selector: ();
+
+        @each $item in $pages {
+            $max: length($pages);
+            $i: index($pages, $item);
+
+            $selector: append($selector, unquote(".#{$item} &:nth-child(#{$i})"), comma);
+        }
+
         &:hover,
-        .index &:nth-child(1),
-        .AboutUs &:nth-child(2),
-        .Products &:nth-child(3),
-        .News &:nth-child(4),
-        .contactUs &:nth-child(5) {
+        #{$selector} {
             background: url(#{$img-path}/icon-menu.png) center 0 no-repeat;
             color: $menu-link-hover;
         }
@@ -159,13 +168,17 @@ h1 {
 .top-nav {
     font-size: em(12px);
 
-    right: 20px;
+    right: 46px;
     top: 10px;
     z-index: z(menu)+1;
 
     a {
-        color: #C8C190;
+        color: $brand-secondary;
         margin-right: 5px;
+
+        &:hover {
+            color: lighten($brand-secondary,30%)
+        }
     }
 }
 
@@ -187,7 +200,7 @@ h1 {
         background: $footer-bg;
         color: $footer-contact-color;
         line-height: $footer-height2;
-        padding: 20px 0;
+        margin: 0;
 
         a {
             color: $footer-contact-color;
@@ -213,11 +226,12 @@ h1 {
             text-align: left;
             vertical-align: middle;
 
-            width: 300px; min-height: 33px;
+            width: cp(290px); max-width: 290px;
+            min-height: 33px;
             padding-left: 48px;
 
             &:nth-child(1) {
-                width: 370px;
+                width: cp(390px); max-width: 390px;
             }
             &:nth-child(2) {
                 background-position: 0 -100px;
@@ -231,6 +245,18 @@ h1 {
                 }
             }
         }
+    }
+}
+
+.copyright {
+    color: $copyright-color;
+    font-size: em(13px);
+
+    span {
+        display: inline-block;
+        vertical-align: middle;
+
+        @include text-pic('logo_s.gif',60px,16px);
     }
 }
 

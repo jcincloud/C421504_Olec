@@ -1,10 +1,15 @@
 @charset "UTF-8";
 
+// common 通用
+@import "mixins/size";
+@import "mixins/arrow";
+@import "mixins/position";
+
 // utils
-// -----------------------------------------------------------------
 @import "mixins/text";
 @import "mixins/state";
 @import "mixins/tab-focus";
+@import "mixins/grid";
 @import "mixins/table";
 @import "mixins/form";
 @import "mixins/media";
@@ -15,11 +20,16 @@
 @import "mixins/prefix-gradient";
 
 
-// var Maps
+// 實用 function
 // -----------------------------------------------------------------
+// 算寬度百分比
+@function cp($target, $container: $min-width) {
+    @return ($target / $container) * 100%;
+}
+
 // colors
-@function color($map, $key) {
-    @return map-get(map-get($color, $map), $key);
+@function color($key) {
+    @return map-get($color, $key);
 }
 
 // z-index
@@ -33,11 +43,6 @@
         $map: map-get($map, $key);
     }
     @return $map;
-}
-
-// 換算百分比
-@function calc-percent($target, $container) {
-    @return ($target / $container) * 100%;
 }
 
 // 範例 background: m-set($color-theme, 'default', 'background', #080808);

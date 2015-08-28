@@ -16,13 +16,12 @@ button{outline: none;}
     box-sizing: border-box;
 }
 
-html {
+html, body {
     text-align: center;
     height: 100%;
 }
 
 body {
-    @extend html;
     background: $body-bg;
     color: $text-color;
     font-family: $font-family-base;
@@ -67,14 +66,14 @@ img {
 // Headings
 // -----------------------------------------------
 h2, h3, h4, h5, h6 {
-    font-weight: m-get($heading,'font-weight');
-    line-height: m-get($heading,'line-height');
-    color: m-get($heading,'color');
+    font-weight: $heading-font-weight;
+    line-height: $heading-line-height;
+    color: $heading-color;
 
     small {
         font-weight: normal;
         line-height: 1;
-        color: m-get($heading,'small-color');
+        color: $heading-small-color;
     }
 }
 h2, h3 {
@@ -93,12 +92,15 @@ h4, h5, h6 {
         font-size: 75%;
     }
 }
-@for $i from 2 through 6 {
-   h#{$i} {
-      font-size: em(m-get($heading, h#{$i}));
-   }
-}
 
+@for $i from 2 through 6 {
+    $headings: $font-size-h1 $font-size-h2 $font-size-h3 $font-size-h4 $font-size-h5 $font-size-h6;
+
+    h#{$i} {
+        // font-size: em(m-get($heading, h#{$i}));
+        font-size: em(nth($headings, $i));
+    }
+}
 
 // Body text
 // -----------------------------------------------

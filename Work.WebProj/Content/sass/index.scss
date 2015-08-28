@@ -1,10 +1,14 @@
 @charset "UTF-8";
 
+// var 變數，需放在 @import "helper/var" 之上才能覆蓋掉
+// ------------------------------------------------------------
 $img-path2:             '../images/index';
 
+$wrapper-bg:            #fff url(../images/bg.gif) center 0 repeat-y;
 $content-spacing:       0;
 
 $header-height:         560px;
+$menu:                  (top, 55px), (right, 1.5%);
 $banner-bg:             url(#{$img-path2}/banner.png) center 0 no-repeat;
 $banner-height:         600px;
 
@@ -12,15 +16,11 @@ $footer-bg:             #406947;
 $footer-height:         390px;
 $footer-height2:        126px;
 $footer-contact-color:  #D5E8C2;
+$copyright-color:       #323232;
 
 
 // import
 // ------------------------------------------------------------
-// helper      non-CSS outputs (mixins,variables) & non-component
-// basic       通用: table,form,classes
-// component   元件
-// layout      布局相關
-//
 @import "helper/var";
 @import "helper/mixins";
 
@@ -62,6 +62,24 @@ $footer-contact-color:  #D5E8C2;
 
 // footer
 // ----------------------------------------------------------------------
+.copyright, #footer iframe {
+    display: inline-block;
+    vertical-align: middle;
+}
+.copyright {
+    margin-right: 140px;
+
+    span {
+        display: block;
+        background-image: url(#{$img-path2}/logo_s.gif);
+        width: 73px;
+        height: 20px;
+        margin-bottom: 10px;
+    }
+}
+#footer iframe {
+    margin: 20px 0 30px;
+}
 
 
 // main
@@ -127,8 +145,8 @@ $footer-contact-color:  #D5E8C2;
     .swiper {
         &-container {
             width: 100%;
-            max-width: 1220px;
-            padding: 0 90px;
+            max-width: 1100px;
+            // padding: 0 90px;
             height: 420px;
             overflow: hidden;
             margin: auto;
@@ -138,10 +156,12 @@ $footer-contact-color:  #D5E8C2;
         }
         &-slide {
             @extend .text-left;
+            @extend .float-l;
 
             width: 435px;
         }
         &-button-prev {
+            position: relative;
             // @include prefix(transform, translateX(-20px));
         }
     }

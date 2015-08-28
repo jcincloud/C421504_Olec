@@ -1,6 +1,9 @@
-@charset "UTF-8";
+$input-radius: nth($border-radius,1) nth($border-radius,2) nth($border-radius,3);
+$input-height: ($line-height-computed + (nth($padding-base,1) * 2)) (ceil($font-size-lg * nth($line-height,1)) + (nth($padding-large,1) * 2)) (floor($font-size-sm * nth($line-height,2)) + (nth($padding-small,1) * 2));
 
-//
+$form-group-margin-bottom: 10px; // '.form-group' 邊距
+
+
 // Forms
 // --------------------------------------------------
 

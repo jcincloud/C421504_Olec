@@ -21,11 +21,10 @@
 
 // 字換圖
 @mixin text-pic($img, $width, $height, $position: 0 0) {
+    @include size($width, $height);
     @include text-hide;
 
     background: url(#{$img-path}/#{$img}) $position no-repeat;
-    width: $width;
-    height: $height;
 }
 
 // 文字溢位出現省略號,要設寬度
@@ -38,15 +37,15 @@
 
 // 文字邊框 ex. @include stroke(2,#fff);
 @function stroke($stroke, $color) {
-  $shadow: ();
-  $from: $stroke*-1;
-  @for $i from $from through $stroke {
-   @for $j from $from through $stroke {
-      $shadow: append($shadow, $i*1px $j*1px 0 $color, comma);
+    $shadow: ();
+    $from: $stroke*-1;
+    @for $i from $from through $stroke {
+        @for $j from $from through $stroke {
+            $shadow: append($shadow, $i*1px $j*1px 0 $color, comma);
+        }
     }
-  }
-  @return $shadow;
+    @return $shadow;
 }
 @mixin stroke($stroke, $color) {
-  text-shadow: stroke($stroke, $color);
+    text-shadow: stroke($stroke, $color);
 }

@@ -5,20 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     @* <meta name="keywords" content="@Resources.ResWeb.keywords">
     <meta name="description" content="@Resources.ResWeb.description"> *@
-    <title>@Resources.Res.System_Name:@ViewBag.Title</title>
-    <!--[if lt IE 9]>
-    <script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
-    <![endif]-->
+    <title>OLEC 富利源企業有限公司 86597773:@ViewBag.Title</title>
+
+    <!--[if lt IE 9]><script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script><![endif]-->
     <script src="~/Scripts/BrowerInfo.js"></script>
     <script>
         var gb_approot = '@Url.Content("~")';
     </script>
-    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
-    @if (ViewBag.IsFirstPage)
-    {
-        <link href="~/Content/css/index.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Content/css/swiper.css">
+    @if (ViewBag.IsFirstPage) {
+    <link rel="stylesheet" href="~/Content/css/index.css">
     } else {
-        <link href="~/Content/css/page.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/page.css">
     }
     @RenderSection("css", false)
 </head>
@@ -69,8 +68,18 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1810.3706362840921!2d121.20784130000001!3d24.838520100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34683c48d5c20e31%3A0x72e8b31495e66ceb!2zMzI15qGD5ZyS5biC6b6N5r2t5Y2A6auY5qWK5YyX6LevMjjomZ8!5e0!3m2!1szh-TW!2stw!4v1440400062208" width="620" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
 </section><!-- footer -->
 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="~/Content/js/swiper/swiper.min.js"></script>
+<script src="//code.jquery.com/jquery-latest.min.js"></script>
+<script src="~/Content/js/swiper.min.js"></script>
+<script src="~/Content/js/scroll.js"></script>
+<script src="~/Content/js/jquery.marquee.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    // 跑馬燈
+    $("#marquee").marquee();
+});
+</script>
+
 @RenderSection("Scripts", required: false)
 
 </body>
