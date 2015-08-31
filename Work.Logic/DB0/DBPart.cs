@@ -142,9 +142,9 @@ namespace ProcCore.Business.DB0
     }
     #endregion
 
-    public partial class C40M0_MilleniaEntities : DbContext
+    public partial class C42A0_OlecEntities : DbContext
     {
-        public C40M0_MilleniaEntities(string connectionstring)
+        public C42A0_OlecEntities(string connectionstring)
             : base(connectionstring)
         {
         }

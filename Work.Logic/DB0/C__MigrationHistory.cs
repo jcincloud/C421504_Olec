@@ -11,15 +11,13 @@ namespace ProcCore.Business.DB0
 {
     using System;
     using System.Collections.Generic;
-    public partial class m_Area :BaseEntityTable {
-    public int area_id { get; set; }
-    public string area_name { get; set; }
-    public string i_InsertUserID { get; set; }
-    public Nullable<int> i_InsertDeptID { get; set; }
-    public Nullable<System.DateTime> i_InsertDateTime { get; set; }
-    public string i_UpdateUserID { get; set; }
-    public Nullable<int> i_UpdateDeptID { get; set; }
-    public Nullable<System.DateTime> i_UpdateDateTime { get; set; }
-    public string i_Lang { get; set; }
+    
+    using Newtonsoft.Json;
+    public partial class C__MigrationHistory : BaseEntityTable
+    {
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

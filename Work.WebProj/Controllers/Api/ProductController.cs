@@ -49,7 +49,7 @@ namespace DotWeb.Api
                     product_sn = x.product_sn,
                     product_name = x.product_name,
                     product_name_c = x.product_name_c,
-                    product_category_name = x.ProductCategory.product_category_name
+                    //product_category_name = x.ProductCategory.product_category_name
                 });
 
 

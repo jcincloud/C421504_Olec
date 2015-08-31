@@ -20,7 +20,7 @@ namespace DotWeb.Menu
             //var returnValue = new List<DynamicNode>();
 
             LogicCenter log = new LogicCenter(CommWebSetup.DB0_CodeString);
-            C40M0_MilleniaEntities db = LogicCenter.getDB0;
+            C42A0_OlecEntities db = LogicCenter.getDB0;
 
             try
             {

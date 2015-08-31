@@ -11,15 +11,10 @@ namespace ProcCore.Business.DB0
 {
     using System;
     using System.Collections.Generic;
-    public partial class m_VisitTimeRecorder :BaseEntityTable {
-    public int visit_time_recorder_id { get; set; }
-    public int visit_detail_id { get; set; }
-    public int customer_id { get; set; }
-    public string user_id { get; set; }
-    public System.DateTime visit_date { get; set; }
-    public Nullable<System.DateTime> start_time { get; set; }
-    public Nullable<System.DateTime> end_time { get; set; }
-    public Nullable<int> timespan { get; set; }
+    public partial class m_C__MigrationHistory :BaseEntityTable {
+    public string MigrationId { get; set; }
+    public string ContextKey { get; set; }
+    public byte[] Model { get; set; }
+    public string ProductVersion { get; set; }
     }
 }
-
