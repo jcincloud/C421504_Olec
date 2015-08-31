@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+$grid-col-switch:  true;
+
+$font-size-h3:     25px;
+$heading-color:    #412401;
+
+// import
+// ------------------------------------------------------------
+@import "helper/var";
+@import "helper/mixins";
+
+@import "base/basic";
+@import "base/table";
+
+@import "component/classes";
+@import "component/btn";
+
+@import "layout/layout";
+
+
+// header
+// ----------------------------------------------------------------------
+#banner {
+    margin-top: 125px;
+}
+
+// footer
+// ----------------------------------------------------------------------
+#footer iframe {
+    display: none;
+}
+.copyright {
+    background: #406947;
+    line-height: 38px;
+
+    span {
+        margin-right: 15px;
+    }
+}
+
+
+// main
+// ----------------------------------------------------------------------
+main {
+    @extend .text-left;
+
+    max-width: $max-width;
+    margin: 0 auto;
+
+    > header {
+        @extend .text-center;
+
+        margin-bottom: 80px;
+    }
+}
+.title {
+    background-attachment: fixed;
+    @include text-pic('title.png', 100%, 55px, center 0);
+
+    margin-top: 0;
+    margin-bottom: $gutter;
+    position: relative;
+
+    &::before, &::after {
+        @include absolute(top 25px);
+
+        content: '';
+        background: lighten($brand-secondary, 40%);
+        width: cp(320px);
+        height: 1px;
+    }
+    &::before { left: 0; }
+    &::after { right: 0; }
+
+    .#{nth($pages, 3)} & {
+        background-position: center -140px;
+
+        &::before, &::after {
+            width: cp(320px);
+        }
+    }
+    .#{nth($pages, 4)} & {
+        background-position: center -278px;
+
+        &::before, &::after {
+            width: cp(260px);
+        }
+    }
+    .#{nth($pages, 5)} & {
+        background-position: center bottom;
+
+        &::before, &::after {
+            width: cp(290px);
+        }
+    }
+}
+
+// 跑馬燈
+.marquee {
+    @extend %list-unstyled;
+    @include size(650px,72px);
+
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+
+    li {
+        position: absolute;
+        top: -999em;
+        left: 0; right: 0;
+
+        color: #412401;
+        font-size: em(15px);
+        line-height: nth($line-height,2);
+    }
+}
+
+aside, article {
+    @extend .float-l;
+}
+aside {
+    width: cp(250px);
+    padding: 0 $gutter;
+
+    a {
+        color: #65590A;
+        font-size: em(17px);
+        display: block;
+        margin-bottom: $gutter;
+
+        &:hover,
+        &.current {
+            color: $link-color;
+        }
+    }
+}
+
+article {
+    padding: 0 cp(20px);
+
+    header {
+        color: $brand-secondary;
+        font-size: em(30px);
+        text-align: left;
+        letter-spacing: 3px;
+        line-height: nth($line-height, 2);
+
+        border-bottom: 1px solid lighten($brand-secondary,40%);
+        margin-top: 10px;
+    }
+    h3 {
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
+    .#{nth($pages, 3)} & {
+        width: cp(725px);
+    }
+}
+
+// == about us
+//
+.#{nth($pages, 2)} table {
+    width: 45%;
+    min-width: 400px;
+    margin-left: 15px;
+}
+
+// == products
+//
+.tip {
+    color: $brand-secondary;
+    font-size: em(14px);
+}
+.#{nth($pages, 3)} table {
+    @extend .full;
+}
+
+// == news
+//
+figure {
+    position: relative;
+
+    .cover {
+        @extend .text-center;
+        @include size(100%, 140px);
+
+        overflow: hidden;
+    }
+    img {
+        width: 100%;
+    }
+    h3 {
+        color: $brand-primary;
+        margin: 10px 0;
+
+        small {
+            display: block;
+            margin-bottom: 5px;
+        }
+    }
+}

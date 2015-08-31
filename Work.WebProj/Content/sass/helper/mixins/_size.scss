@@ -1,0 +1,5 @@
+// Sizing 只輸入一個值時是正方形
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}

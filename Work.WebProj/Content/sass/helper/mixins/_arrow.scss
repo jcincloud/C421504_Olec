@@ -1,0 +1,21 @@
+// 用css做三角形
+
+@mixin arrow($dir: right, $size: 5px, $color: inherit) {
+    content: '';
+    border: $size solid transparent;
+
+    @include size(0);
+
+    @if ($dir == "top" or $dir =="up") {
+        border-bottom: $size solid $color;
+    }
+    @else if ($dir == "bottom" or $dir == "down") {
+        border-top: $size solid $color;
+    }
+    @else if ($dir == "right") {
+        border-left: $size solid $color;
+    }
+    @else if ($dir == "left") {
+        border-right: $size solid $color;
+    }
+}
