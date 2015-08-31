@@ -38,8 +38,7 @@ $link-color:            $brand-secondary !default;             // 文字鏈結�
 $link-hover-color:      darken($link-color, 15%) !default;     // 滑鼠移過色
 
 // layout
-$columns:               12 !default;         // grid 預設格數
-$gutter:                20px !default;       // grid 間距
+
 $min-width:             1007px !default;     // 網頁最小尺寸
 $max-width:             1400px !default;     // 網頁最寬尺寸: .wrap
 
@@ -184,7 +183,7 @@ $medias: (
     lg:                 (min-width: 1220px),   // wide desktop
     sm-min:             (min-width: 767px),
     md-max-tablet:      (max-width: 960px),
-    md-max-pc:          (max-width: 1024px)
+    md-max:             '(min-width:992px) and (max-width: 1366px)'
 );
 
 

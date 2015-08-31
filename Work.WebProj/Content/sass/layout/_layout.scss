@@ -1,7 +1,7 @@
 
 // wrapper
 $wrapper-bg:            #fff !default;
-$content-spacing:       70px !default;
+$content-spacing:       30px !default;
 
 // header
 $header-bg:             #315400 !default;
@@ -11,7 +11,7 @@ $menu:                  (top, 38px), (right, 1.5%) !default;
 $menu-link:             #C2D217 !default;
 $menu-link-hover:       #D5E8C2 !default;
 
-$banner-bg:             url(#{$img-path}/banner.jpg) center 0 no-repeat !default;
+$banner-bg:             url(#{$img-path}/#{nth($pages, 2)}/banner.jpg) center 0 no-repeat !default;
 $banner-height:         270px !default;
 
 // footer
@@ -22,45 +22,6 @@ $footer-height2:        140px !default;
 $footer-contact-color:  #406947 !default;
 $copyright-color:       #E3E5DC !default;
 
-
-
-// Grid/ var.scss> $grid-col-switch = true 時才會輸出
-// -----------------------------------------------------------------------
-@if $grid-col-switch {
-
-    // .container,
-    // .row {
-    // }
-
-    // .container {
-    //     @include row;
-
-    //     padding: 0 ($gutter / 2);
-    // }
-
-    .row {
-        @extend %clearfix;
-        // @include row(true);
-        & + & {
-            margin-top: $gutter;
-        }
-    }
-
-    [class*="col-"] {
-        @extend .float-l;
-
-        padding: 0 $gutter;
-
-        &:last-child {
-            padding-right: 0;
-        }
-    }
-
-    @include make-col; // 預設: md
-    @include media(sm) { @include make-col(sm); }
-    @include media(xs) { @include make-col(xs); }
-    @include media(lg) { @include make-col(lg); }
-}
 
 /*      layout
 -----------------------------------------------------------------------*/
@@ -121,10 +82,13 @@ h1, #menu, .top-nav {
 }
 
 h1 {
-    @include text-pic('logo.gif',305px,125px);
-
     left: 0;
     z-index: z(logo);
+
+    @include text-pic('logo.gif',305px,125px);
+    @include media('(min-width:992px) and (max-width: 1366px)') {
+        left: cp(20px);
+    }
 }
 
 #menu {
@@ -151,7 +115,6 @@ h1 {
         $selector: ();
 
         @each $item in $pages {
-            $max: length($pages);
             $i: index($pages, $item);
 
             $selector: append($selector, unquote(".#{$item} &:nth-child(#{$i})"), comma);
@@ -226,12 +189,12 @@ h1 {
             text-align: left;
             vertical-align: middle;
 
-            width: cp(290px); max-width: 290px;
+            width: cp(290px); max-width: 330px;
             min-height: 33px;
             padding-left: 48px;
 
             &:nth-child(1) {
-                width: cp(390px); max-width: 390px;
+                width: cp(390px); max-width: 430px;
             }
             &:nth-child(2) {
                 background-position: 0 -100px;

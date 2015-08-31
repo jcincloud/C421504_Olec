@@ -16,6 +16,7 @@ $heading-color:    #412401;
 @import "component/classes";
 @import "component/btn";
 
+@import "layout/grid";
 @import "layout/layout";
 
 
@@ -23,6 +24,16 @@ $heading-color:    #412401;
 // ----------------------------------------------------------------------
 #banner {
     margin-top: 125px;
+
+    .#{nth($pages, 3)} & {
+        background-image: url(#{$img-path}/#{nth($pages, 3)}/banner.jpg);
+    }
+    .#{nth($pages, 4)} & {
+        background-image: url(#{$img-path}/#{nth($pages, 4)}/banner.jpg);
+    }
+    .#{nth($pages, 5)} & {
+        background-image: url(#{$img-path}/#{nth($pages, 5)}/banner.jpg);
+    }
 }
 
 // footer
@@ -45,6 +56,7 @@ $heading-color:    #412401;
 main {
     @extend .text-left;
 
+    padding: 0 cp(20px);
     max-width: $max-width;
     margin: 0 auto;
 
@@ -59,7 +71,7 @@ main {
     @include text-pic('title.png', 100%, 55px, center 0);
 
     margin-top: 0;
-    margin-bottom: $gutter;
+    margin-bottom: 20px;
     position: relative;
 
     &::before, &::after {
@@ -77,21 +89,21 @@ main {
         background-position: center -140px;
 
         &::before, &::after {
-            width: cp(320px);
+            width: cp(295px);
         }
     }
     .#{nth($pages, 4)} & {
         background-position: center -278px;
 
         &::before, &::after {
-            width: cp(260px);
+            width: cp(230px);
         }
     }
     .#{nth($pages, 5)} & {
         background-position: center bottom;
 
         &::before, &::after {
-            width: cp(290px);
+            width: cp(285px);
         }
     }
 }
@@ -116,18 +128,16 @@ main {
     }
 }
 
-aside, article {
-    @extend .float-l;
-}
 aside {
+    @extend .float-l;
+
     width: cp(250px);
-    padding: 0 $gutter;
 
     a {
         color: #65590A;
         font-size: em(17px);
         display: block;
-        margin-bottom: $gutter;
+        margin-bottom: 20px;
 
         &:hover,
         &.current {
@@ -137,8 +147,6 @@ aside {
 }
 
 article {
-    padding: 0 cp(20px);
-
     header {
         color: $brand-secondary;
         font-size: em(30px);
@@ -148,6 +156,10 @@ article {
 
         border-bottom: 1px solid lighten($brand-secondary,40%);
         margin-top: 10px;
+
+        .#{nth($pages, 4)} & {
+            letter-spacing: 1px;
+        }
     }
     h3 {
         letter-spacing: 2px;
@@ -155,14 +167,16 @@ article {
     }
 
     .#{nth($pages, 3)} & {
-        width: cp(725px);
+        @extend .float-r;
+
+        width: cp(745px);
     }
 }
 
 // == about us
 //
 .#{nth($pages, 2)} table {
-    width: 45%;
+    width: cp(400px);
     min-width: 400px;
     margin-left: 15px;
 }
@@ -181,23 +195,66 @@ article {
 //
 figure {
     position: relative;
+    height: 350px;
+    margin-top: 20px;
+
+    &:nth-child(3n+2) {
+        margin-left: 0;
+    }
 
     .cover {
         @extend .text-center;
         @include size(100%, 140px);
 
+        margin: 0 auto;
         overflow: hidden;
     }
     img {
         width: 100%;
+        @include prefix(transform, translateY(-40%))
     }
     h3 {
         color: $brand-primary;
+        line-height: 1.3;
         margin: 10px 0;
+
+        @include text-overflow;
 
         small {
             display: block;
             margin-bottom: 5px;
         }
+    }
+    .btn {
+        margin-top: 12px;
+    }
+}
+
+// == contact
+.#{nth($pages, 5)} main {
+    iframe {
+        width: cp(620px);
+        height: 320px;
+    }
+    dl {
+        border-top: 3px solid $brand-secondary;
+        border-bottom: 3px solid $brand-secondary;
+        margin: 20px 0 0 20px;
+    }
+    dt {
+        clear: left;
+        border-top: 1px solid lighten($brand-secondary, 20%);
+        width: 60px;
+        padding: 10px;
+        margin-right: 10px;
+    }
+    dd {
+        border-top: 1px solid lighten($brand-secondary, 20%);
+        padding: 10px;
+        min-width: 257px;
+    }
+    dt, dd {
+        float: left;
+        &:nth-of-type(1) { border-top: none; }
     }
 }

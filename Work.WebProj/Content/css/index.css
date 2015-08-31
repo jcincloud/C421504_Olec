@@ -399,7 +399,7 @@ address {
 
 @media (max-width: 768px) {
   .wrap, section, main {
-    padding: 0 10px;
+    padding: 0 1%;
     width: 100%; } }
 
 #wrapper {
@@ -425,13 +425,16 @@ h1, #menu, .top-nav {
   position: absolute; }
 
 h1 {
+  left: 0;
+  z-index: 50;
   width: 305px;
   height: 125px;
   font: 0/0 a;
   text-indent: -9999px;
-  background: url(../images/logo.gif) 0 0 no-repeat;
-  left: 0;
-  z-index: 50; }
+  background: url(../images/logo.gif) 0 0 no-repeat; }
+  @media (min-width: 992px) and (max-width: 1366px) {
+    h1 {
+      left: 1.9861%; } }
 
 #menu {
   top: 55px;
@@ -495,12 +498,12 @@ h1 {
       text-align: left;
       vertical-align: middle;
       width: 28.79841%;
-      max-width: 290px;
+      max-width: 330px;
       min-height: 33px;
       padding-left: 48px; }
       #footer .list-inline li:nth-child(1) {
         width: 38.7289%;
-        max-width: 390px; }
+        max-width: 430px; }
       #footer .list-inline li:nth-child(2) {
         background-position: 0 -100px; }
       #footer .list-inline li:nth-child(3) {
