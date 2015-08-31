@@ -764,10 +764,10 @@ main {
   margin-bottom: 20px;
   position: relative; }
   .title::before, .title::after {
-    position: absolute;
-    top: 25px;
     content: '';
     background: #e3f4af;
+    position: absolute;
+    top: 25px;
     width: 31.77756%;
     height: 1px; }
   .title::before {
@@ -796,8 +796,8 @@ main {
   .marquee li {
     position: absolute;
     top: -999em;
-    left: 0;
     right: 0;
+    left: 0;
     color: #412401;
     font-size: 0.9375em;
     line-height: 1.5; }

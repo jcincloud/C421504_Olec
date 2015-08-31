@@ -20,19 +20,23 @@ $heading-color:    #412401;
 @import "layout/layout";
 
 
+// 取第3個之後的pages值
+$page: ();
+@for $i from 3 through length($pages) {
+    $page: append($page, nth($pages, $i));
+}
+
 // header
 // ----------------------------------------------------------------------
 #banner {
     margin-top: 125px;
 
-    .#{nth($pages, 3)} & {
-        background-image: url(#{$img-path}/#{nth($pages, 3)}/banner.jpg);
-    }
-    .#{nth($pages, 4)} & {
-        background-image: url(#{$img-path}/#{nth($pages, 4)}/banner.jpg);
-    }
-    .#{nth($pages, 5)} & {
-        background-image: url(#{$img-path}/#{nth($pages, 5)}/banner.jpg);
+    @for $i from 1 through length($page) {
+        $item: nth($page, $i);
+
+        .#{$item} & {
+            background-image: url(#{$img-path}/#{$item}/banner.jpg);
+        }
     }
 }
 
@@ -75,35 +79,30 @@ main {
     position: relative;
 
     &::before, &::after {
-        @include absolute(top 25px);
-
         content: '';
         background: lighten($brand-secondary, 40%);
-        width: cp(320px);
-        height: 1px;
+
+        @include absolute(top 25px);
+        @include size(cp(320px),1px);
     }
     &::before { left: 0; }
     &::after { right: 0; }
 
-    .#{nth($pages, 3)} & {
-        background-position: center -140px;
 
-        &::before, &::after {
-            width: cp(295px);
-        }
-    }
-    .#{nth($pages, 4)} & {
-        background-position: center -278px;
+    // 合併 $pages width 圖片定位
+    $attrs: zip($page, 295px 230px 285px, -140px -278px bottom);
 
-        &::before, &::after {
-            width: cp(230px);
-        }
-    }
-    .#{nth($pages, 5)} & {
-        background-position: center bottom;
+    @each $item in $attrs {
+        $class: nth($item, 1);
+        $width: nth($item, 2);
+        $vertical: nth($item, 3);
 
-        &::before, &::after {
-            width: cp(285px);
+        .#{$class} & {
+            background-position: center $vertical;
+
+            &::before, &::after {
+                width: cp($width);
+            }
         }
     }
 }
@@ -118,9 +117,7 @@ main {
     overflow: hidden;
 
     li {
-        position: absolute;
-        top: -999em;
-        left: 0; right: 0;
+        @include absolute(top -999em left 0 right 0);
 
         color: #412401;
         font-size: em(15px);
@@ -233,8 +230,7 @@ figure {
 // == contact
 .#{nth($pages, 5)} main {
     iframe {
-        width: cp(620px);
-        height: 320px;
+        @include size(cp(620px),320px);
     }
     dl {
         border-top: 3px solid $brand-secondary;
