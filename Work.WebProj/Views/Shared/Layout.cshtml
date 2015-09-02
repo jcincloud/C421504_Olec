@@ -41,14 +41,20 @@
                 <a href="@Url.Action("SetLanguage")?L=en-US&A=index">::English</a>
             </nav>
         </div><!-- wrap //-->
-        <div id="banner">
+        <div id="banner" class="swiper-container">
+            <ul class="swiper-wrapper">
             @if (ViewBag.IsFirstPage)
             {
-                <header>ENVIRONMENTAL PROTECTION</header>
-                <h2>致力於接著劑(膠)及綠能遮光材料開發與製造加工<br>並以ＯＬＥＣ品牌銷售世界30餘國</h2>
+                <li class="swiper-slide">banner 1</li>
+                <li class="swiper-slide">banner 2</li>
+                <li class="swiper-slide">banner 3</li>
             }
             else
-            { }
+            {
+                <li class="swiper-slide">banner 1</li>
+                <li class="swiper-slide">banner 2</li>
+            }
+            </ul>
         </div><!-- banner //-->
     </section><!-- header //-->
 
@@ -69,7 +75,7 @@
 </section><!-- footer -->
 
 <script src="//code.jquery.com/jquery-latest.min.js"></script>
-<script src="~/Content/js/swiper.min.js"></script>
+<script src="~/Content/js/swiper.jquery.min.js"></script>
 <script src="~/Content/js/scroll.js"></script>
 <script src="~/Content/js/jquery.marquee.min.js"></script>
 
@@ -78,6 +84,12 @@ $(document).ready(function () {
     // 跑馬燈
     $("#marquee").marquee();
 });
+// swiper 輪播圖
+var mySwiper = new Swiper ('#banner', {
+    loop: true,
+    autoplay: 3000,
+    effect: 'fade'
+})
 </script>
 
 @RenderSection("Scripts", required: false)

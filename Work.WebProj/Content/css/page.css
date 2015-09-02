@@ -341,12 +341,12 @@ caption {
   word-wrap: break-word;
   word-break: break-all; }
 
-.wrap::before, section::before, main::before, #menu::before, .wrap::after, section::after, main::after, #menu::after,
+.row::before, .wrap::before, section::before, main::before, #menu::before, .row::after, .wrap::after, section::after, main::after, #menu::after,
 .clearfix::before,
 .clearfix::after {
   content: " ";
   display: table; }
-.wrap::after, section::after, main::after, #menu::after,
+.row::after, .wrap::after, section::after, main::after, #menu::after,
 .clearfix::after {
   clear: both; }
 
@@ -429,6 +429,8 @@ caption {
 [class*="col-"] {
   float: left;
   margin-left: 2%; }
+  [class*="col-"]:first-child, .row [class*="col-"]:first-child {
+    margin-left: 0; }
 
 .col-1 {
   width: 6.5%; }
@@ -580,7 +582,7 @@ caption {
   position: relative;
   min-width: 1007px; }
 
-.wrap {
+.row, .wrap {
   max-width: 1400px;
   margin: 0 auto; }
 
@@ -606,12 +608,14 @@ main {
     height: 125px;
     width: 100%;
     position: absolute;
-    z-index: 0; }
+    z-index: 2; }
 
 h1, #menu, .top-nav {
   position: absolute; }
 
 h1 {
+  cursor: pointer;
+  cursor: hand;
   left: 0;
   z-index: 50;
   width: 305px;
@@ -653,9 +657,12 @@ h1 {
       color: #d3ed83; }
 
 #banner {
-  background: url(../images/AboutUs/banner.jpg) center 0 no-repeat;
-  height: 270px;
   z-index: 1; }
+  #banner .swiper-slide {
+    font: 0/0 a;
+    text-indent: -9999px;
+    background-position: center 0;
+    height: 270px; }
 
 #footer {
   margin-top: -178px;
