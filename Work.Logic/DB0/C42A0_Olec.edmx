@@ -63,44 +63,44 @@
           <Key>
             <PropertyRef Name="customer_id" />
           </Key>
-          <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="customer_sn" Type="varchar" MaxLength="16" />
-          <Property Name="customer_name" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="customer_all_name" Type="nvarchar" MaxLength="128" />
-          <Property Name="tw_zip" Type="varchar" MaxLength="5" />
-          <Property Name="tw_city" Type="nvarchar" MaxLength="5" />
-          <Property Name="tw_country" Type="nvarchar" MaxLength="5" />
-          <Property Name="tw_address" Type="nvarchar" MaxLength="128" />
-          <Property Name="contact_1" Type="nvarchar" MaxLength="64" />
+          <Property Name="customer_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="customer_sn" MaxLength="16" Type="varchar" />
+          <Property Name="customer_name" Nullable="false" MaxLength="64" Type="nvarchar" />
+          <Property Name="customer_all_name" MaxLength="128" Type="nvarchar" />
+          <Property Name="tw_zip" MaxLength="5" Type="varchar" />
+          <Property Name="tw_city" MaxLength="5" Type="nvarchar" />
+          <Property Name="tw_country" MaxLength="5" Type="nvarchar" />
+          <Property Name="tw_address" MaxLength="128" Type="nvarchar" />
+          <Property Name="contact_1" MaxLength="64" Type="nvarchar" />
           <Property Name="birthday_1" Type="smalldatetime" />
-          <Property Name="contact_2" Type="nvarchar" MaxLength="16" />
+          <Property Name="contact_2" MaxLength="16" Type="nvarchar" />
           <Property Name="birthday_2" Type="smalldatetime" />
-          <Property Name="tel" Type="varchar" MaxLength="16" />
-          <Property Name="fax" Type="varchar" MaxLength="16" />
-          <Property Name="mobile" Type="varchar" MaxLength="16" />
-          <Property Name="sno" Type="char" MaxLength="8" />
-          <Property Name="opening_time_1" Type="varchar" MaxLength="16" />
-          <Property Name="opening_time_2" Type="varchar" MaxLength="16" />
-          <Property Name="email" Type="varchar" MaxLength="128" />
-          <Property Name="customer_type" Type="tinyint" Nullable="false" />
-          <Property Name="channel_type" Type="tinyint" Nullable="false" />
+          <Property Name="tel" MaxLength="16" Type="varchar" />
+          <Property Name="fax" MaxLength="16" Type="varchar" />
+          <Property Name="mobile" MaxLength="16" Type="varchar" />
+          <Property Name="sno" MaxLength="8" Type="char" />
+          <Property Name="opening_time_1" MaxLength="16" Type="varchar" />
+          <Property Name="opening_time_2" MaxLength="16" Type="varchar" />
+          <Property Name="email" MaxLength="128" Type="varchar" />
+          <Property Name="customer_type" Nullable="false" Type="tinyint" />
+          <Property Name="channel_type" Nullable="false" Type="tinyint" />
           <Property Name="evaluate" Type="tinyint" />
-          <Property Name="store_level" Type="tinyint" Nullable="false" />
-          <Property Name="store_type" Type="tinyint" Nullable="false" />
+          <Property Name="store_level" Nullable="false" Type="tinyint" />
+          <Property Name="store_type" Nullable="false" Type="tinyint" />
           <Property Name="state" Type="tinyint" />
-          <Property Name="area_id" Type="int" Nullable="false" />
+          <Property Name="area_id" Nullable="false" Type="int" />
           <Property Name="level_type" Type="tinyint" />
-          <Property Name="memo" Type="nvarchar" MaxLength="256" />
-          <Property Name="mark_err" Type="bit" Nullable="false" />
-          <Property Name="owner_name" Type="nvarchar" MaxLength="16" />
-          <Property Name="sort" Type="int" Nullable="false" />
-          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="memo" MaxLength="256" Type="nvarchar" />
+          <Property Name="mark_err" Nullable="false" Type="bit" />
+          <Property Name="owner_name" MaxLength="16" Type="nvarchar" />
+          <Property Name="sort" Nullable="false" Type="int" />
+          <Property Name="i_InsertUserID" MaxLength="128" Type="nvarchar" />
           <Property Name="i_InsertDeptID" Type="int" />
           <Property Name="i_InsertDateTime" Type="datetime" />
-          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateUserID" MaxLength="128" Type="nvarchar" />
           <Property Name="i_UpdateDeptID" Type="int" />
           <Property Name="i_UpdateDateTime" Type="datetime" />
-          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="i_Lang" Nullable="false" MaxLength="5" Type="char" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -421,44 +421,44 @@
           <Key>
             <PropertyRef Name="customer_id" />
           </Key>
-          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="customer_sn" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="customer_name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="customer_all_name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="tw_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="tw_city" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="tw_country" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="tw_address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="contact_1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="birthday_1" Type="DateTime" Precision="0" />
-          <Property Name="contact_2" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="birthday_2" Type="DateTime" Precision="0" />
-          <Property Name="tel" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="fax" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="mobile" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="sno" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
-          <Property Name="opening_time_1" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="opening_time_2" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="customer_type" Type="Byte" Nullable="false" />
-          <Property Name="channel_type" Type="Byte" Nullable="false" />
+          <Property Name="customer_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="customer_sn" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="customer_name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="customer_all_name" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="tw_zip" MaxLength="5" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="tw_city" MaxLength="5" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="tw_country" MaxLength="5" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="tw_address" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="contact_1" MaxLength="64" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="birthday_1" Precision="0" Type="DateTime" />
+          <Property Name="contact_2" MaxLength="16" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="birthday_2" Precision="0" Type="DateTime" />
+          <Property Name="tel" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="fax" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="mobile" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="sno" MaxLength="8" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="opening_time_1" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="opening_time_2" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="email" MaxLength="128" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="customer_type" Nullable="false" Type="Byte" />
+          <Property Name="channel_type" Nullable="false" Type="Byte" />
           <Property Name="evaluate" Type="Byte" />
-          <Property Name="store_level" Type="Byte" Nullable="false" />
-          <Property Name="store_type" Type="Byte" Nullable="false" />
+          <Property Name="store_level" Nullable="false" Type="Byte" />
+          <Property Name="store_type" Nullable="false" Type="Byte" />
           <Property Name="state" Type="Byte" />
-          <Property Name="area_id" Type="Int32" Nullable="false" />
+          <Property Name="area_id" Nullable="false" Type="Int32" />
           <Property Name="level_type" Type="Byte" />
-          <Property Name="memo" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="mark_err" Type="Boolean" Nullable="false" />
-          <Property Name="owner_name" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="sort" Type="Int32" Nullable="false" />
-          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="memo" MaxLength="256" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="mark_err" Nullable="false" Type="Boolean" />
+          <Property Name="owner_name" MaxLength="16" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="sort" Nullable="false" Type="Int32" />
+          <Property Name="i_InsertUserID" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
           <Property Name="i_InsertDeptID" Type="Int32" />
-          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDateTime" Precision="3" Type="DateTime" />
+          <Property Name="i_UpdateUserID" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
           <Property Name="i_UpdateDeptID" Type="Int32" />
-          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_Lang" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="i_UpdateDateTime" Precision="3" Type="DateTime" />
+          <Property Name="i_Lang" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" Type="String" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
