@@ -849,10 +849,8 @@ article h3 {
 .News article {
   padding-bottom: 20px; }
 
-.AboutUs table {
-  width: 39.72195%;
-  min-width: 400px;
-  margin-left: 15px; }
+.AboutUs img.float-r {
+  padding-left: 15px; }
 
 .tip {
   color: #94BC1B;
