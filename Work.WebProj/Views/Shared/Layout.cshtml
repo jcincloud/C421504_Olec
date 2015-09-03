@@ -42,19 +42,19 @@
             </nav>
         </div><!-- wrap //-->
         <div id="banner" class="swiper-container">
-            <ul class="swiper-wrapper">
+            <div class="swiper-wrapper">
             @if (ViewBag.IsFirstPage)
             {
-                <li class="swiper-slide">banner 1</li>
-                <li class="swiper-slide">banner 2</li>
-                <li class="swiper-slide">banner 3</li>
+                <li class="swiper-slide i1">banner 1</li>
+                <li class="swiper-slide i2">banner 2</li>
+                <li class="swiper-slide i3">banner 3</li>
             }
             else
             {
-                <li class="swiper-slide">banner 1</li>
-                <li class="swiper-slide">banner 2</li>
+                <li class="swiper-slide i1">banner 1</li>
+                <li class="swiper-slide i2">banner 2</li>
             }
-            </ul>
+            </div>
         </div><!-- banner //-->
     </section><!-- header //-->
 
@@ -80,15 +80,16 @@
 <script src="~/Content/js/jquery.marquee.min.js"></script>
 
 <script>
-$(document).ready(function () {
-    // 跑馬燈
-    $("#marquee").marquee();
-});
+// 跑馬燈
+$("#marquee").marquee();
+
 // swiper 輪播圖
-var mySwiper = new Swiper ('#banner', {
+var mySwiper = new Swiper('#banner',{
     loop: true,
-    autoplay: 3000,
-    effect: 'fade'
+    autoplay: 4000,
+    speed: 1000,
+    effect: 'fade',
+    autoplayDisableOnInteraction: false
 })
 </script>
 

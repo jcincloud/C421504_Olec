@@ -2,6 +2,7 @@
 
 $font-size-h3:     25px;
 $heading-color:    #412401;
+$btn-font-size:    17px;
 
 // import
 // ------------------------------------------------------------
@@ -18,10 +19,13 @@ $heading-color:    #412401;
 @import "layout/layout";
 
 
-// 取第3個之後的pages值
-$page: ();
-@for $i from 3 through length($pages) {
-    $page: append($page, nth($pages, $i));
+// 取第n個之後的pages值
+@function page($item) {
+    $page: ();
+    @for $i from $item through length($pages) {
+        $page: append($page, nth($pages, $i));
+    }
+    @return $page;
 }
 
 // header
@@ -29,14 +33,22 @@ $page: ();
 #banner {
     margin-top: 125px;
 
-    @for $i from 1 through length($page) {
-        $item: nth($page, $i);
+    // @for $i from 1 through length($page) {
+    //     $item: nth($page, $i);
 
-        .#{$item} & {
-            background-image: url(#{$img-path}/#{$item}/banner.jpg);
+    //     .#{$item} & {
+    //         background-image: url(#{$img-path}/#{$item}/banner.jpg);
+    //     }
+    // }
+    @each $item in page(2) {
+        @for $i from 1 through 2 {
+            .#{$item} & .i#{$i} {
+                background-image: url(#{$img-path}/#{$item}/banner#{$i}.jpg);
+            }
         }
     }
 }
+
 
 // footer
 // ----------------------------------------------------------------------
@@ -86,20 +98,18 @@ main {
     &::before { left: 0; }
     &::after { right: 0; }
 
+    $class: page(3);
+    $width: 295px 230px 285px;
+    $vertical: -140px -278px bottom;
 
-    // 合併 $pages width 圖片定位
-    $attrs: zip($page, 295px 230px 285px, -140px -278px bottom);
-
-    @each $item in $attrs {
-        $class: nth($item, 1);
-        $width: nth($item, 2);
-        $vertical: nth($item, 3);
-
-        .#{$class} & {
-            background-position: center $vertical;
+    // type1 @each
+    @each $v in $vertical {
+        $i: index($vertical, $v);
+        .#{nth($class, $i)} & {
+            background-position: center nth($vertical, $i);
 
             &::before, &::after {
-                width: cp($width);
+                width: cp(nth($width, $i));
             }
         }
     }
@@ -142,6 +152,7 @@ aside {
 }
 
 article {
+    padding-bottom: 20px;
     header {
         color: $brand-secondary;
         font-size: em(30px);
@@ -222,6 +233,7 @@ figure {
     }
     .btn {
         margin-top: 12px;
+        font-size: em(13px);
     }
 }
 

@@ -470,9 +470,11 @@ h1 {
 #banner {
   z-index: 1; }
   #banner .swiper-slide {
+    background-position: center 0;
+    background-repeat: no-repeat;
     font: 0/0 a;
     text-indent: -9999px;
-    background-position: center 0;
+    width: 100%;
     height: 600px; }
 
 #footer {
@@ -553,14 +555,14 @@ h1 {
   background-image: url(../images/index/logo.png);
   height: 165px; }
 
-#banner {
-  background: none; }
-  #banner .swiper-slide:nth-of-type(1) {
-    background-image: url(../images/index/banner.png); }
-  #banner .swiper-slide:nth-of-type(2) {
-    background-image: url(../images/index/banner2.png); }
-  #banner .swiper-slide:nth-of-type(3) {
-    background-image: url(../images/index/banner2.png); }
+#banner .i1 {
+  background-image: url(../images/index/banner1.jpg); }
+
+#banner .i2 {
+  background-image: url(../images/index/banner2.jpg); }
+
+#banner .i3 {
+  background-image: url(../images/index/banner3.jpg); }
 
 .copyright, #footer iframe {
   display: inline-block;

@@ -161,9 +161,10 @@ h1 {
     z-index: z(banner);
 
     .swiper-slide {
-        @include text-hide;
         background-position: center 0;
-        height: $banner-height;
+        background-repeat: no-repeat;
+        @include text-hide;
+        @include size(100%, $banner-height);
     }
 }
 

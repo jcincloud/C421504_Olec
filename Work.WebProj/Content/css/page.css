@@ -411,7 +411,7 @@ caption {
   border-radius: 25px;
   color: #D5E8C2;
   font-family: AnjaEliane, "Microsoft Jhenghei", \5FAE\8EDF\6B63\9ED1\9AD4, Georgia, Arial, sans-serif;
-  font-size: 0.8125em;
+  font-size: 1.0625em;
   line-height: 1.01; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
     outline: thin dotted;
@@ -659,9 +659,11 @@ h1 {
 #banner {
   z-index: 1; }
   #banner .swiper-slide {
+    background-position: center 0;
+    background-repeat: no-repeat;
     font: 0/0 a;
     text-indent: -9999px;
-    background-position: center 0;
+    width: 100%;
     height: 270px; }
 
 #footer {
@@ -737,12 +739,22 @@ h1 {
 
 #banner {
   margin-top: 125px; }
-  .Products #banner {
-    background-image: url(../images/Products/banner.jpg); }
-  .News #banner {
-    background-image: url(../images/News/banner.jpg); }
-  .ContactUs #banner {
-    background-image: url(../images/ContactUs/banner.jpg); }
+  .AboutUs #banner .i1 {
+    background-image: url(../images/AboutUs/banner1.jpg); }
+  .AboutUs #banner .i2 {
+    background-image: url(../images/AboutUs/banner2.jpg); }
+  .Products #banner .i1 {
+    background-image: url(../images/Products/banner1.jpg); }
+  .Products #banner .i2 {
+    background-image: url(../images/Products/banner2.jpg); }
+  .News #banner .i1 {
+    background-image: url(../images/News/banner1.jpg); }
+  .News #banner .i2 {
+    background-image: url(../images/News/banner2.jpg); }
+  .ContactUs #banner .i1 {
+    background-image: url(../images/ContactUs/banner1.jpg); }
+  .ContactUs #banner .i2 {
+    background-image: url(../images/ContactUs/banner2.jpg); }
 
 #footer iframe {
   display: none; }
@@ -819,21 +831,23 @@ aside {
     aside a:hover, aside a.current {
       color: #94BC1B; }
 
-article header {
-  color: #94BC1B;
-  font-size: 1.875em;
-  text-align: left;
-  letter-spacing: 3px;
-  line-height: 1.5;
-  border-bottom: 1px solid #e3f4af;
-  margin-top: 10px; }
-  .News article header {
-    letter-spacing: 1px; }
-article h3 {
-  letter-spacing: 2px;
-  margin-bottom: 5px; }
-.Products article {
-  width: 73.98213%; }
+article {
+  padding-bottom: 20px; }
+  article header {
+    color: #94BC1B;
+    font-size: 1.875em;
+    text-align: left;
+    letter-spacing: 3px;
+    line-height: 1.5;
+    border-bottom: 1px solid #e3f4af;
+    margin-top: 10px; }
+    .News article header {
+      letter-spacing: 1px; }
+  article h3 {
+    letter-spacing: 2px;
+    margin-bottom: 5px; }
+  .Products article {
+    width: 73.98213%; }
 
 .AboutUs table {
   width: 39.72195%;
@@ -871,7 +885,8 @@ figure {
       display: block;
       margin-bottom: 5px; }
   figure .btn {
-    margin-top: 12px; }
+    margin-top: 12px;
+    font-size: 0.8125em; }
 
 .ContactUs main iframe {
   width: 61.56902%;
