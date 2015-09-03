@@ -11,7 +11,6 @@ $menu:                  (top, 38px), (right, 1.5%) !default;
 $menu-link:             #C2D217 !default;
 $menu-link-hover:       #D5E8C2 !default;
 
-$banner-bg:             url(#{$img-path}/#{nth($pages, 2)}/banner.jpg) center 0 no-repeat !default;
 $banner-height:         270px !default;
 
 // footer
@@ -25,20 +24,20 @@ $copyright-color:       #E3E5DC !default;
 
 /*      layout
 -----------------------------------------------------------------------*/
-#wrapper, .wrap, section, main {
+// 有最小寬度，滿版
+%container {
     position: relative;
     min-width: $min-width;
 }
 
-// 有寬度限制，非滿版
-.wrap {
-    @extend .text-left;
-
+// 有最大寬度，非滿版
+%center {
     max-width: $max-width;
     margin: 0 auto;
 }
 
-.wrap, section, main {
+// 容器內主體部份(header、wrap、main、footer等)
+%box {
     @extend %clearfix;
 
     @include media(sm) {
@@ -48,12 +47,25 @@ $copyright-color:       #E3E5DC !default;
 }
 
 #wrapper {
+    @extend %container;
     @if $lte7 {
         _height: 100%;
     }
     min-height: 100%;
     padding-bottom: $footer-height + $content-spacing; // 內容與footer間距
     background: $wrapper-bg;
+}
+
+.wrap {
+    @extend %container;
+    @extend %box;
+    @extend %center;
+    @extend .text-left;
+}
+
+section, main {
+    @extend %container;
+    @extend %box;
 }
 
 main {
@@ -73,7 +85,7 @@ main {
         height: 125px;
         width: 100%;
         position: absolute;
-        z-index: z(banner)-1;
+        z-index: z(banner) + 1;
     }
 }
 
@@ -82,6 +94,7 @@ h1, #menu, .top-nav {
 }
 
 h1 {
+    cursor: pointer; cursor: hand; // for ie
     left: 0;
     z-index: z(logo);
 
@@ -131,8 +144,7 @@ h1 {
 .top-nav {
     font-size: em(12px);
 
-    right: 46px;
-    top: 10px;
+    right: 46px; top: 10px;
     z-index: z(menu)+1;
 
     a {
@@ -146,9 +158,13 @@ h1 {
 }
 
 #banner {
-    background: $banner-bg;
-    height: $banner-height;
     z-index: z(banner);
+
+    .swiper-slide {
+        @include text-hide;
+        background-position: center 0;
+        height: $banner-height;
+    }
 }
 
 
