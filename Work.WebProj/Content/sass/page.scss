@@ -98,14 +98,13 @@ main {
     &::before { left: 0; }
     &::after { right: 0; }
 
-    $class: page(3);
     $width: 295px 230px 285px;
     $vertical: -140px -278px bottom;
 
     // type1 @each
     @each $v in $vertical {
         $i: index($vertical, $v);
-        .#{nth($class, $i)} & {
+        .#{nth(page(3), $i)} & {
             background-position: center nth($vertical, $i);
 
             &::before, &::after {
@@ -152,7 +151,6 @@ aside {
 }
 
 article {
-    padding-bottom: 20px;
     header {
         color: $brand-secondary;
         font-size: em(30px);
@@ -176,6 +174,9 @@ article {
         @extend .float-r;
 
         width: cp(745px);
+    }
+    .#{nth($pages, 4)} & {
+        padding-bottom: 20px;
     }
 }
 

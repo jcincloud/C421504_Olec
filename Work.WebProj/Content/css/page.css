@@ -831,23 +831,23 @@ aside {
     aside a:hover, aside a.current {
       color: #94BC1B; }
 
-article {
+article header {
+  color: #94BC1B;
+  font-size: 1.875em;
+  text-align: left;
+  letter-spacing: 3px;
+  line-height: 1.5;
+  border-bottom: 1px solid #e3f4af;
+  margin-top: 10px; }
+  .News article header {
+    letter-spacing: 1px; }
+article h3 {
+  letter-spacing: 2px;
+  margin-bottom: 5px; }
+.Products article {
+  width: 73.98213%; }
+.News article {
   padding-bottom: 20px; }
-  article header {
-    color: #94BC1B;
-    font-size: 1.875em;
-    text-align: left;
-    letter-spacing: 3px;
-    line-height: 1.5;
-    border-bottom: 1px solid #e3f4af;
-    margin-top: 10px; }
-    .News article header {
-      letter-spacing: 1px; }
-  article h3 {
-    letter-spacing: 2px;
-    margin-bottom: 5px; }
-  .Products article {
-    width: 73.98213%; }
 
 .AboutUs table {
   width: 39.72195%;

@@ -370,6 +370,7 @@
     <Content Include="Content\font\MElleHK.ttf" />
     <Content Include="Content\font\MElleHK.woff" />
     <Content Include="Content\images\AboutUs\banner1.jpg" />
+    <Content Include="Content\images\AboutUs\pic.jpg" />
     <Content Include="Content\images\bg.gif" />
     <Content Include="Content\images\ContactUs\banner1.jpg" />
     <Content Include="Content\images\icon-contact.png" />
@@ -720,14 +721,12 @@
     <Content Include="Scripts\app\swipe.js" />
     <Content Include="Scripts\app\toastr.min.js" />
     <Content Include="Scripts\build\comminc.js" />
-    <Content Include="Scripts\build\func\c-Comm.js" />
     <Content Include="Scripts\build\func\inc\c-Comm.js" />
     <Content Include="Scripts\build\func\inc\c-ImgFileSort.js" />
     <Content Include="Scripts\build\func\m-Agent.js" />
     <Content Include="Scripts\build\func\m-ChangePassword.js" />
     <Content Include="Scripts\build\func\m-Customer.js" />
     <Content Include="Scripts\build\func\m-CustomerAgent.js" />
-    <Content Include="Scripts\build\func\m-CustomerSales.js" />
     <Content Include="Scripts\build\func\m-login.js" />
     <Content Include="Scripts\build\func\m-Product.js" />
     <Content Include="Scripts\build\func\m-ProductBrand.js" />
@@ -743,7 +742,6 @@
     <Content Include="Scripts\build\func\m-Stock.js" />
     <Content Include="Scripts\build\func\m-Stock_view.js" />
     <Content Include="Scripts\build\func\m-Users.js" />
-    <Content Include="Scripts\build\func\t-Customer.js" />
     <Content Include="Scripts\build\func\t-login.js" />
     <Content Include="Scripts\build\func\t-New.js" />
     <Content Include="Scripts\build\func\t-Schedule.js" />
@@ -898,7 +896,6 @@
     <Content Include="Scripts\src\jsx\m-Stock.jsx" />
     <Content Include="Scripts\src\jsx\m-ProductCategory.jsx" />
     <Content Include="Scripts\src\jsx\m-Roles.jsx" />
-    <Content Include="_Code\CSS\sass\bs\.sublad4.tmp" />
     <Content Include="_Code\CSS\sass\bs\bootstrap.scss" />
     <Content Include="_Code\CSS\sass\bs\mixins\_alerts.scss" />
     <Content Include="_Code\CSS\sass\bs\mixins\_background-variant.scss" />
