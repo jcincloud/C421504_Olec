@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="C42A0_OlecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="C42A0_OlecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -58,49 +58,6 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="user_name_c" Type="nvarchar" MaxLength="32" Nullable="false" />
           <Property Name="sort" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Customer">
-          <Key>
-            <PropertyRef Name="customer_id" />
-          </Key>
-          <Property Name="customer_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="customer_sn" MaxLength="16" Type="varchar" />
-          <Property Name="customer_name" Nullable="false" MaxLength="64" Type="nvarchar" />
-          <Property Name="customer_all_name" MaxLength="128" Type="nvarchar" />
-          <Property Name="tw_zip" MaxLength="5" Type="varchar" />
-          <Property Name="tw_city" MaxLength="5" Type="nvarchar" />
-          <Property Name="tw_country" MaxLength="5" Type="nvarchar" />
-          <Property Name="tw_address" MaxLength="128" Type="nvarchar" />
-          <Property Name="contact_1" MaxLength="64" Type="nvarchar" />
-          <Property Name="birthday_1" Type="smalldatetime" />
-          <Property Name="contact_2" MaxLength="16" Type="nvarchar" />
-          <Property Name="birthday_2" Type="smalldatetime" />
-          <Property Name="tel" MaxLength="16" Type="varchar" />
-          <Property Name="fax" MaxLength="16" Type="varchar" />
-          <Property Name="mobile" MaxLength="16" Type="varchar" />
-          <Property Name="sno" MaxLength="8" Type="char" />
-          <Property Name="opening_time_1" MaxLength="16" Type="varchar" />
-          <Property Name="opening_time_2" MaxLength="16" Type="varchar" />
-          <Property Name="email" MaxLength="128" Type="varchar" />
-          <Property Name="customer_type" Nullable="false" Type="tinyint" />
-          <Property Name="channel_type" Nullable="false" Type="tinyint" />
-          <Property Name="evaluate" Type="tinyint" />
-          <Property Name="store_level" Nullable="false" Type="tinyint" />
-          <Property Name="store_type" Nullable="false" Type="tinyint" />
-          <Property Name="state" Type="tinyint" />
-          <Property Name="area_id" Nullable="false" Type="int" />
-          <Property Name="level_type" Type="tinyint" />
-          <Property Name="memo" MaxLength="256" Type="nvarchar" />
-          <Property Name="mark_err" Nullable="false" Type="bit" />
-          <Property Name="owner_name" MaxLength="16" Type="nvarchar" />
-          <Property Name="sort" Nullable="false" Type="int" />
-          <Property Name="i_InsertUserID" MaxLength="128" Type="nvarchar" />
-          <Property Name="i_InsertDeptID" Type="int" />
-          <Property Name="i_InsertDateTime" Type="datetime" />
-          <Property Name="i_UpdateUserID" MaxLength="128" Type="nvarchar" />
-          <Property Name="i_UpdateDeptID" Type="int" />
-          <Property Name="i_UpdateDateTime" Type="datetime" />
-          <Property Name="i_Lang" Nullable="false" MaxLength="5" Type="char" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -198,19 +155,16 @@
           <Property Name="menu_id" Type="int" Nullable="false" />
           <Property Name="role_id" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
-        <EntityType Name="Product">
+        <EntityType Name="News">
           <Key>
-            <PropertyRef Name="product_id" />
+            <PropertyRef Name="news_id" />
           </Key>
-          <Property Name="product_id" Type="int" Nullable="false" />
-          <Property Name="product_sn" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="product_name" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="product_name_c" Type="nvarchar" MaxLength="64" />
-          <Property Name="standard" Type="nvarchar" MaxLength="256" />
-          <Property Name="product_brand_id" Type="int" Nullable="false" />
-          <Property Name="product_category_id" Type="int" Nullable="false" />
-          <Property Name="brand" Type="varchar" MaxLength="32" />
-          <Property Name="unit_name" Type="nvarchar" MaxLength="32" />
+          <Property Name="news_id" Type="int" Nullable="false" />
+          <Property Name="news_title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="news_date" Type="datetime" Nullable="false" />
+          <Property Name="news_intro" Type="nvarchar" MaxLength="250" />
+          <Property Name="news_content" Type="text" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
           <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
           <Property Name="i_InsertDeptID" Type="int" />
           <Property Name="i_InsertDateTime" Type="datetime" />
@@ -218,7 +172,22 @@
           <Property Name="i_UpdateDeptID" Type="int" />
           <Property Name="i_UpdateDateTime" Type="datetime" />
           <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="category" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="product_content" Type="text" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
         </EntityType>
         <Association Name="FK_AspNetUsers_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
@@ -318,7 +287,6 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_Currency" EntityType="Self.i_Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_IDX" EntityType="Self.i_IDX" Schema="dbo" store:Type="Tables" />
@@ -328,6 +296,7 @@
           <EntitySet Name="i_UserLoginLog" EntityType="Self.i_UserLoginLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuRole" EntityType="Self.MenuRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AspNetUsers_Department" Association="Self.FK_AspNetUsers_Department">
             <End Role="Department" EntitySet="Department" />
@@ -358,8 +327,7 @@
             <End Role="MenuRole" EntitySet="MenuRole" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="C42A0_OlecModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -416,49 +384,6 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="Department" Relationship="Self.FK_AspNetUsers_Department" FromRole="AspNetUsers" ToRole="Department" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-        </EntityType>
-        <EntityType Name="Customer">
-          <Key>
-            <PropertyRef Name="customer_id" />
-          </Key>
-          <Property Name="customer_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-          <Property Name="customer_sn" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="customer_name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="customer_all_name" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="tw_zip" MaxLength="5" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="tw_city" MaxLength="5" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="tw_country" MaxLength="5" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="tw_address" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="contact_1" MaxLength="64" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="birthday_1" Precision="0" Type="DateTime" />
-          <Property Name="contact_2" MaxLength="16" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="birthday_2" Precision="0" Type="DateTime" />
-          <Property Name="tel" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="fax" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="mobile" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="sno" MaxLength="8" FixedLength="true" Unicode="false" Type="String" />
-          <Property Name="opening_time_1" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="opening_time_2" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="email" MaxLength="128" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="customer_type" Nullable="false" Type="Byte" />
-          <Property Name="channel_type" Nullable="false" Type="Byte" />
-          <Property Name="evaluate" Type="Byte" />
-          <Property Name="store_level" Nullable="false" Type="Byte" />
-          <Property Name="store_type" Nullable="false" Type="Byte" />
-          <Property Name="state" Type="Byte" />
-          <Property Name="area_id" Nullable="false" Type="Int32" />
-          <Property Name="level_type" Type="Byte" />
-          <Property Name="memo" MaxLength="256" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="mark_err" Nullable="false" Type="Boolean" />
-          <Property Name="owner_name" MaxLength="16" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="sort" Nullable="false" Type="Int32" />
-          <Property Name="i_InsertUserID" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="i_InsertDeptID" Type="Int32" />
-          <Property Name="i_InsertDateTime" Precision="3" Type="DateTime" />
-          <Property Name="i_UpdateUserID" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="i_UpdateDeptID" Type="Int32" />
-          <Property Name="i_UpdateDateTime" Precision="3" Type="DateTime" />
-          <Property Name="i_Lang" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" Type="String" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -550,28 +475,6 @@
           <Property Name="is_only_tablet" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.MenuRole" FromRole="Menu" ToRole="AspNetRoles" />
         </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="product_id" />
-          </Key>
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="product_sn" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="product_name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="product_name_c" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="standard" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="product_brand_id" Type="Int32" Nullable="false" />
-          <Property Name="product_category_id" Type="Int32" Nullable="false" />
-          <Property Name="brand" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="unit_name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_InsertDeptID" Type="Int32" />
-          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_UpdateDeptID" Type="Int32" />
-          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_Lang" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -625,7 +528,6 @@
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="Customer" EntityType="Self.Customer" />
           <EntitySet Name="Department" EntityType="Self.Department" />
           <EntitySet Name="i_Currency" EntityType="Self.i_Currency" />
           <EntitySet Name="i_IDX" EntityType="Self.i_IDX" />
@@ -634,7 +536,6 @@
           <EntitySet Name="i_SN" EntityType="Self.i_SN" />
           <EntitySet Name="i_UserLoginLog" EntityType="Self.i_UserLoginLog" />
           <EntitySet Name="Menu" EntityType="Self.Menu" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -655,7 +556,43 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
+          <EntitySet Name="News" EntityType="C42A0_OlecModel.News" />
+          <EntitySet Name="Product" EntityType="C42A0_OlecModel.Product" />
         </EntityContainer>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="news_id" />
+          </Key>
+          <Property Name="news_id" Type="Int32" Nullable="false" />
+          <Property Name="news_title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="news_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="news_intro" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="news_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="product_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -707,50 +644,6 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="user_name_c" ColumnName="user_name_c" />
                 <ScalarProperty Name="sort" ColumnName="sort" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Customer">
-            <EntityTypeMapping TypeName="C42A0_OlecModel.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-                <ScalarProperty Name="customer_sn" ColumnName="customer_sn" />
-                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
-                <ScalarProperty Name="customer_all_name" ColumnName="customer_all_name" />
-                <ScalarProperty Name="tw_zip" ColumnName="tw_zip" />
-                <ScalarProperty Name="tw_city" ColumnName="tw_city" />
-                <ScalarProperty Name="tw_country" ColumnName="tw_country" />
-                <ScalarProperty Name="tw_address" ColumnName="tw_address" />
-                <ScalarProperty Name="contact_1" ColumnName="contact_1" />
-                <ScalarProperty Name="birthday_1" ColumnName="birthday_1" />
-                <ScalarProperty Name="contact_2" ColumnName="contact_2" />
-                <ScalarProperty Name="birthday_2" ColumnName="birthday_2" />
-                <ScalarProperty Name="tel" ColumnName="tel" />
-                <ScalarProperty Name="fax" ColumnName="fax" />
-                <ScalarProperty Name="mobile" ColumnName="mobile" />
-                <ScalarProperty Name="sno" ColumnName="sno" />
-                <ScalarProperty Name="opening_time_1" ColumnName="opening_time_1" />
-                <ScalarProperty Name="opening_time_2" ColumnName="opening_time_2" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="customer_type" ColumnName="customer_type" />
-                <ScalarProperty Name="channel_type" ColumnName="channel_type" />
-                <ScalarProperty Name="evaluate" ColumnName="evaluate" />
-                <ScalarProperty Name="store_level" ColumnName="store_level" />
-                <ScalarProperty Name="store_type" ColumnName="store_type" />
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="area_id" ColumnName="area_id" />
-                <ScalarProperty Name="level_type" ColumnName="level_type" />
-                <ScalarProperty Name="memo" ColumnName="memo" />
-                <ScalarProperty Name="mark_err" ColumnName="mark_err" />
-                <ScalarProperty Name="owner_name" ColumnName="owner_name" />
-                <ScalarProperty Name="sort" ColumnName="sort" />
-                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
-                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
-                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
-                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
-                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
-                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
-                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -850,29 +743,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="C42A0_OlecModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="product_sn" ColumnName="product_sn" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="product_name_c" ColumnName="product_name_c" />
-                <ScalarProperty Name="standard" ColumnName="standard" />
-                <ScalarProperty Name="product_brand_id" ColumnName="product_brand_id" />
-                <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
-                <ScalarProperty Name="brand" ColumnName="brand" />
-                <ScalarProperty Name="unit_name" ColumnName="unit_name" />
-                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
-                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
-                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
-                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
-                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
-                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
-                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
-                <ScalarProperty Name="category" ColumnName="category" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="C42A0_OlecModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
@@ -889,6 +759,42 @@
               <ScalarProperty Name="menu_id" ColumnName="menu_id" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="C42A0_OlecModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="news_content" ColumnName="news_content" />
+                <ScalarProperty Name="news_intro" ColumnName="news_intro" />
+                <ScalarProperty Name="news_date" ColumnName="news_date" />
+                <ScalarProperty Name="news_title" ColumnName="news_title" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="C42A0_OlecModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="product_content" ColumnName="product_content" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -14,7 +14,8 @@ var MasterImageUpload = React.createClass({
 			url_download:null,
 			url_sort:null,
 			FileKind:null,
-			MainId:0
+			MainId:0,
+			uploader:null
 		};
 	},
 	componentDidUpdate:function(prevProps, prevState){
@@ -27,6 +28,12 @@ var MasterImageUpload = React.createClass({
 	},
 	componentWillReceiveProps:function(nextProps){
 		
+	},
+	componentWillUnmount:function(){
+		console.log('MasterFileUpload','destroy');
+		if(this.props.uploader!=null){
+			this.props.uploader.destroy();
+		}
 	},
 	deleteFile:function(filename){
 		jqPost(this.props.url_delete,{
@@ -52,7 +59,7 @@ var MasterImageUpload = React.createClass({
 		})			
 		.done(function(data, textStatus, jqXHRdata) {
 			if(data.result){
-				this.setState({filelist:data.filesObject})
+				this.setState({filelist:data.files})
 			}else{
 				alert(data.message);
 			}
@@ -65,7 +72,7 @@ var MasterImageUpload = React.createClass({
 			var btn = document.getElementById('upload-btn-' + this.props.MainId);
 			var r_this = this;
 
-		  	var uploader = new ss.SimpleUpload({
+		  	this.props.uploader = new ss.SimpleUpload({
 		        button: btn,
 		        url: this.props.url_upload,
 		        data:{

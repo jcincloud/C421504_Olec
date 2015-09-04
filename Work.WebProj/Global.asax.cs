@@ -24,8 +24,12 @@ namespace DotWeb.AppStart
             {
                 ContextCondition = (x => (new WebInfo()).isTablet()) 
             });
-            
-            
+
+            DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("en-US")
+            {
+                ContextCondition = (C => C.Request.Cookies[VarCookie + ".Lang"] != null && C.Request.Cookies[VarCookie + ".Lang"].Value.Contains("en-US"))
+            });
+
 
         }
         protected void Application_BeginRequest(Object sender, EventArgs e)

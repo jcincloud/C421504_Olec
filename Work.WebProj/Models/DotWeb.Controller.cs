@@ -75,10 +75,10 @@ namespace DotWeb.Controller
         protected string getAction = string.Empty;
 
         //訂義檔案上傳路行樣板
-        protected string upload_path_tpl_o = "~/_Code/SysUpFiles/{0}/{1}/{2}/{3}/{4}";
-        protected string upload_path_tpl_s = "~/_Code/SysUpFiles/{0}/{1}/{2}/{3}";
+        protected string upload_path_tpl_o = "~/_Upload/{0}/{1}/{2}/{3}/{4}";
+        protected string upload_path_tpl_s = "~/_Upload/{0}/{1}/{2}/{3}";
         //訂義檔案刪除路徑樣板
-        protected string delete_file_path_tpl = "~/_Code/SysUpFiles/{0}/{1}/{2}";
+        protected string delete_file_path_tpl = "~/_Upload/{0}/{1}/{2}";
 
         //系統認可圖片檔副檔名
         protected string[] imgExtDef = new string[] { ".jpg", ".jpeg", ".gif", ".png", ".bmp" };
@@ -803,6 +803,32 @@ namespace DotWeb.Controller
                         return 0;
                     }
                 }
+            }
+        }
+        public string GetImg(int id, string file_kind, string category1, string category2)
+        {
+            string tpl_path = "~/_Upload/" + category1 + "/" + category2 + "/" + id + "/" + file_kind;
+            string img_folder = Server.MapPath(tpl_path);
+
+            if (Directory.Exists(img_folder))
+            {
+                var get_files = Directory.EnumerateFiles(img_folder)
+                    .Where(x => x.EndsWith("jpg") || x.EndsWith("jpeg") || x.EndsWith("png") || x.EndsWith("gif"))
+                    .FirstOrDefault();
+
+                if (get_files != null)
+                {
+                    FileInfo file_info = new FileInfo(get_files);
+                    return Url.Content(tpl_path + "\\" + file_info.Name);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
             }
         }
         private SNObject GetSN(ProcCore.Business.SNType tab)

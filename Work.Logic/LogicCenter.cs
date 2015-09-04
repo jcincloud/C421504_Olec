@@ -14,7 +14,7 @@ namespace ProcCore.Business
 {
     public enum CodeTable
     {
-        Base, News, VisitTimeRecorder
+        Base, News, Product
     }
     public enum SNType
     {
@@ -56,7 +56,7 @@ namespace ProcCore.Business.LogicConect
         private static string db0_connectionstring;
         protected C42A0_OlecEntities db0;
         protected TransactionScope tx;
-        private const string DatabaseName = "C40M0_Millenia";
+        private const string DatabaseName = "C42A0_Olec";
         public int DepartmentId { get; set; }
         public string Lang { get; set; }
         public string IP { get; set; }

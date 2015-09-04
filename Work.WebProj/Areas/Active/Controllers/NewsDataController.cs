@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace DotWeb.Areas.Active.Controllers
 {
-    public class CustomerController : AdminController
+    public class NewsDataController : AdminController
     {
         #region Action and function section
         public ActionResult Main()
@@ -40,7 +40,7 @@ namespace DotWeb.Areas.Active.Controllers
             #region
             try
             {
-                if (filekind == "File1")
+                if (filekind == "Photo1")
                     handleFileSave(filename, id, ImageFileUpParm.NewsBasicSingle, filekind, "News", "News");
 
                 r.result = true;

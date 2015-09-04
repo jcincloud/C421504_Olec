@@ -1,4 +1,4 @@
-﻿
+﻿@model ProcCore.Business.DB0.NewsContent
 @{
     ViewBag.Title = "最新消息內容";
     ViewBag.BodyClass = "News";
@@ -8,18 +8,18 @@
 <header>
     <h2 class="title">NEWS & EVENTS</h2>
     <ul id="marquee" class="marquee">
-        <li>NEWS title1</li>
-        <li>NEWS title2</li>
-        <li>NEWS title3</li>
+        @foreach (var title in Model.title)
+        {
+            <li>@title</li>
+        }
     </ul>
 </header>
 
 <article>
-    <header>敬邀 2014 第十七屆中國國際膠黏劑及密封劑展</header>
-    <h4>2015/8/28</h4>
+    <header>@Model.item.news_title</header>
+    <h4>@Model.item.news_date.ToString("yyyy/MM/dd")</h4>
     <!-- 下為後台編輯資料，編輯方式使用富學行程樣版 -->
-    <p>今年富利源推出新綠色節能概念之環保膠水 - 一液型水性PU膠, 水性硫化膠, 水性CR膠及生質TPU樹脂,現場將會展示新產品樣品及應用產品, 包括: 品牌運動</p>
-    <p>Mny of Kenya’s schoolchildren were afflicted by the chigoe flea as they could not afford shoes, the parasite’s bite causes a variety of ailments, including mild to severe ulceration. A Taiwanese man,Yang Yu-jen and his wife Cara launched an internet-based used shoe donation campaign. Nan Pao Resins also joined this remarkable event, our employees feel sympathetic to their situation and voluntarily donated lots of new and used shoes and clothes. Thanks to the wonderful local students spent thier time to sort and bag those shoes, this event can never successfully held without thier effort. Besides donating those new and used shoes, Nan Pao Resins also donated a 20 foot container and shipping expense. Tis container will arrive Kenya in a month, but we have received a sweet thank you card form Kenya children.</p>
-    <img src="~/Content/images/News/temp.jpg" alt="插圖">
+    @Html.Raw(Model.item.news_content)
+    <img src="@Model.item.imgsrc" alt="插圖">
 </article>
 <div class="text-right"><a href="~/News" class="btn">回列表</a></div>

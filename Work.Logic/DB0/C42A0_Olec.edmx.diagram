@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="C42A0_OlecModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="C42A0_OlecModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="C42A0_OlecModel.AspNetUsers" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="C42A0_OlecModel.Customer" PointX="10.375" PointY="10.75" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="C42A0_OlecModel.Department" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="C42A0_OlecModel.i_Currency" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="C42A0_OlecModel.i_IDX" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
@@ -18,12 +17,13 @@
         <EntityTypeShape EntityType="C42A0_OlecModel.i_SN" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="C42A0_OlecModel.i_UserLoginLog" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="C42A0_OlecModel.Menu" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="C42A0_OlecModel.Product" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
         <AssociationConnector Association="C42A0_OlecModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="C42A0_OlecModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="C42A0_OlecModel.FK_AspNetUsers_Department" ManuallyRouted="false" />
         <AssociationConnector Association="C42A0_OlecModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="C42A0_OlecModel.MenuRole" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="C42A0_OlecModel.News" Width="1.5" PointX="8.375" PointY="10.75" />
+        <EntityTypeShape EntityType="C42A0_OlecModel.Product" Width="1.5" PointX="10.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

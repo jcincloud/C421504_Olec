@@ -217,9 +217,9 @@ namespace DotWeb.CommSetup
         {
             get
             {
-                ImageUpScope imUp = new ImageUpScope() { keepOrigin = true, limitCount = 50, limitSize = 1024 * 1024 * 2 };
+                ImageUpScope imUp = new ImageUpScope() { keepOrigin = true, limitCount = 1, limitSize = 1024 * 1024 * 5 };
                 imUp.Parm = new ImageSizeParm[] {
-                    new ImageSizeParm(){ width=700,folderName="Photo1"}
+                    new ImageSizeParm(){ width=400,folderName="Photo1"}
                 };
                 return imUp;
             }

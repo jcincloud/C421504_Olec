@@ -11,39 +11,45 @@ using System.Web.Http;
 
 namespace DotWeb.Api
 {
-    public class ProductController : ajaxApi<Product, q_Product>
+    public class NewsController : ajaxApi<News, q_News>
     {
         public async Task<IHttpActionResult> Get(int id)
         {
             using (db0 = getDB0())
             {
-                item = await db0.Product.FindAsync(id);
-                r = new ResultInfo<Product>() { data = item };
+                item = await db0.News.FindAsync(id);
+                r = new ResultInfo<News>() { data = item };
             }
 
             return Ok(r);
         }
-        public async Task<IHttpActionResult> Get([FromUri]q_Product q)
+        public async Task<IHttpActionResult> Get([FromUri]q_News q)
         {
             #region 連接BusinessLogicLibary資料庫並取得資料
 
             using (db0 = getDB0())
             {
-                var qr = db0.Product
-                    .OrderByDescending(x => x.product_id).AsQueryable();
+                var qr = db0.News
+                    .OrderByDescending(x => x.news_date).AsQueryable();
 
 
-                if (q.product_name != null)
+                if (q.title != null)
                 {
-                    qr = qr.Where(x => x.product_name.Contains(q.product_name));
+                    qr = qr.Where(x => x.news_title.Contains(q.title));
                 }
 
-
-
-                var result = qr.Select(x => new m_Product()
+                if (q.i_Lang != null)
                 {
-                    product_id = x.product_id,
-                    product_name = x.product_name
+                    qr = qr.Where(x => x.i_Lang == q.i_Lang);
+                }
+
+                var result = qr.Select(x => new m_News()
+                {
+                    news_id = x.news_id,
+                    news_title = x.news_title,
+                    news_date = x.news_date,
+                    i_Hide = x.i_Hide,
+                    i_Lang = x.i_Lang
                 });
 
 
@@ -51,7 +57,7 @@ namespace DotWeb.Api
                 int position = PageCount.PageInfo(page, this.defPageSize, qr.Count());
                 var segment = await result.Skip(position).Take(this.defPageSize).ToListAsync();
 
-                return Ok<GridInfo<m_Product>>(new GridInfo<m_Product>()
+                return Ok<GridInfo<m_News>>(new GridInfo<m_News>()
                 {
                     rows = segment,
                     total = PageCount.TotalPage,
@@ -63,16 +69,18 @@ namespace DotWeb.Api
             }
             #endregion
         }
-        public async Task<IHttpActionResult> Put([FromBody]Product md)
+        public async Task<IHttpActionResult> Put([FromBody]News md)
         {
             ResultInfo r = new ResultInfo();
             try
             {
                 db0 = getDB0();
 
-                item = await db0.Product.FindAsync(md.product_id);
-                item.product_name = md.product_name;
-                item.product_content = md.product_content;
+                item = await db0.News.FindAsync(md.news_id);
+                item.news_title = md.news_title;
+                item.news_intro = md.news_intro;
+                item.news_date = md.news_date;
+                item.news_content = md.news_content;
                 item.i_Lang = md.i_Lang;
                 item.i_Hide = md.i_Hide;
 
@@ -94,9 +102,9 @@ namespace DotWeb.Api
             }
             return Ok(r);
         }
-        public async Task<IHttpActionResult> Post([FromBody]Product md)
+        public async Task<IHttpActionResult> Post([FromBody]News md)
         {
-            md.product_id = GetNewId(ProcCore.Business.CodeTable.Base);
+            md.news_id = GetNewId(ProcCore.Business.CodeTable.News);
             ResultInfo r = new ResultInfo();
             if (!ModelState.IsValid)
             {
@@ -115,11 +123,11 @@ namespace DotWeb.Api
                 md.i_InsertDeptID = this.departmentId;
                 //md.i_Lang = "zh-TW";
 
-                db0.Product.Add(md);
+                db0.News.Add(md);
                 await db0.SaveChangesAsync();
 
                 r.result = true;
-                r.id = md.product_id;
+                r.id = md.news_id;
                 return Ok(r);
                 #endregion
             }
@@ -143,9 +151,9 @@ namespace DotWeb.Api
 
                 foreach (var id in ids)
                 {
-                    item = new Product() { product_id = id };
-                    db0.Product.Attach(item);
-                    db0.Product.Remove(item);
+                    item = new News() { news_id = id };
+                    db0.News.Attach(item);
+                    db0.News.Remove(item);
                 }
 
                 await db0.SaveChangesAsync();

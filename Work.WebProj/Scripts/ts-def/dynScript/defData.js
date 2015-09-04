@@ -536,4 +536,8 @@ var CommData;
         { id: 4, label: '南區' },
         { id: 5, label: '花東區' }
     ];
+    CommData.LangData = [
+        { val: 'zh-TW', label: '繁體中文(台灣)' },
+        { val: 'en-US', label: '日本語(日本)' }
+    ];
 })(CommData || (CommData = {}));

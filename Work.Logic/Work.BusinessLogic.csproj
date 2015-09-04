@@ -100,9 +100,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>C42A0_Olec.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DB0\Customer.cs">
-      <DependentUpon>C42A0_Olec.tt</DependentUpon>
-    </Compile>
     <Compile Include="DB0\DBPart.cs" />
     <Compile Include="DB0\Department.cs">
       <DependentUpon>C42A0_Olec.tt</DependentUpon>
@@ -140,9 +137,6 @@
     <Compile Include="DB0\m_AspNetUsers.cs">
       <DependentUpon>C42A0_Olec.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB0\m_Customer.cs">
-      <DependentUpon>C42A0_Olec.tt</DependentUpon>
-    </Compile>
     <Compile Include="DB0\m_Department.cs">
       <DependentUpon>C42A0_Olec.tt</DependentUpon>
     </Compile>
@@ -167,7 +161,13 @@
     <Compile Include="DB0\m_Menu.cs">
       <DependentUpon>C42A0_Olec.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\m_News.cs">
+      <DependentUpon>C42A0_Olec.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\m_Product.cs">
+      <DependentUpon>C42A0_Olec.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\News.cs">
       <DependentUpon>C42A0_Olec.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\Product.cs">

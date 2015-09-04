@@ -11,10 +11,12 @@ namespace ProcCore.Business.DB0
 {
     using System;
     using System.Collections.Generic;
-    public partial class m_Product :BaseEntityTable {
-    public int product_id { get; set; }
-    public string product_name { get; set; }
-    public string product_content { get; set; }
+    public partial class m_News :BaseEntityTable {
+    public int news_id { get; set; }
+    public string news_title { get; set; }
+    public System.DateTime news_date { get; set; }
+    public string news_intro { get; set; }
+    public string news_content { get; set; }
     public bool i_Hide { get; set; }
     public string i_InsertUserID { get; set; }
     public Nullable<int> i_InsertDeptID { get; set; }
@@ -25,4 +27,3 @@ namespace ProcCore.Business.DB0
     public string i_Lang { get; set; }
     }
 }
-
