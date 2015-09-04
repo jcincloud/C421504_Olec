@@ -206,8 +206,19 @@ namespace ProcCore.Business.DB0
         public IList<News> News { get; set; }
         public IList<string> title { get; set; }
     }
-    public class NewsContent : NewsInfo {
+    public class NewsContent : NewsInfo
+    {
         public News item { get; set; }
+    }
+    public class ProductInfo
+    {
+        public Product Product { get; set; }
+        public IList<Plist> list { get; set; }
+    }
+    public class Plist
+    {
+        public string p_name { get; set; }
+        public int p_id { get; set; }
     }
     #endregion
 
@@ -234,6 +245,7 @@ namespace ProcCore.Business.DB0
     {
         public string product_name { get; set; }
         public int? product_category_id { get; set; }
+        public string i_Lang { get; set; }
     }
     public class q_Customer : QueryBase
     {

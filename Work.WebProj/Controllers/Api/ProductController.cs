@@ -38,12 +38,17 @@ namespace DotWeb.Api
                     qr = qr.Where(x => x.product_name.Contains(q.product_name));
                 }
 
-
+                if (q.i_Lang != null)
+                {
+                    qr = qr.Where(x => x.i_Lang == q.i_Lang);
+                }
 
                 var result = qr.Select(x => new m_Product()
                 {
                     product_id = x.product_id,
-                    product_name = x.product_name
+                    product_name = x.product_name,
+                    i_Hide = x.i_Hide,
+                    i_Lang = x.i_Lang
                 });
 
 
@@ -73,6 +78,7 @@ namespace DotWeb.Api
                 item = await db0.Product.FindAsync(md.product_id);
                 item.product_name = md.product_name;
                 item.product_content = md.product_content;
+                item.sort = md.sort;
                 item.i_Lang = md.i_Lang;
                 item.i_Hide = md.i_Hide;
 
@@ -96,7 +102,7 @@ namespace DotWeb.Api
         }
         public async Task<IHttpActionResult> Post([FromBody]Product md)
         {
-            md.product_id = GetNewId(ProcCore.Business.CodeTable.Base);
+            md.product_id = GetNewId(ProcCore.Business.CodeTable.Product);
             ResultInfo r = new ResultInfo();
             if (!ModelState.IsValid)
             {

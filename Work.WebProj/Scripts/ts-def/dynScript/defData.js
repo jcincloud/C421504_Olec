@@ -538,6 +538,6 @@ var CommData;
     ];
     CommData.LangData = [
         { val: 'zh-TW', label: '繁體中文(台灣)' },
-        { val: 'en-US', label: '日本語(日本)' }
+        { val: 'en-US', label: '英語(美國)' }
     ];
 })(CommData || (CommData = {}));

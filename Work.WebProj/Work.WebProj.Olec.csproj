@@ -807,7 +807,6 @@
     <Content Include="_Code\CSS\fonts\bootstrap\glyphicons-halflings-regular.eot" />
     <Content Include="_Code\CSS\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
     <Content Include="_Code\CSS\fonts\bootstrap\glyphicons-halflings-regular.woff" />
-    <Content Include="Scripts\src\jsx\m-Customer.jsx" />
     <Content Include="Views\Shared\View.cshtml" />
     <Content Include="ckeditor\plugins\scayt\LICENSE.md" />
     <Content Include="ckeditor\plugins\scayt\README.md" />
@@ -940,6 +939,7 @@
     <Content Include="Views\AboutUs\AboutUs.cshtml" />
     <Content Include="Views\ContactUs\ContactUs.cshtml" />
     <Content Include="Scripts\src\jsx\m-News.jsx" />
+    <Content Include="Views\Products\NoData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

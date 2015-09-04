@@ -180,6 +180,7 @@
           <Property Name="product_id" Type="int" Nullable="false" />
           <Property Name="product_name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="product_content" Type="text" />
+          <Property Name="sort" Type="int" />
           <Property Name="i_Hide" Type="bit" Nullable="false" />
           <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
           <Property Name="i_InsertDeptID" Type="int" />
@@ -592,6 +593,7 @@
           <Property Name="i_UpdateDeptID" Type="Int32" />
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="sort" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -781,6 +783,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="C42A0_OlecModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="sort" ColumnName="sort" />
                 <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
                 <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
                 <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />

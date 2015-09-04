@@ -103,6 +103,8 @@ var GirdForm = React.createClass({
     },
     handleSubmit: function(e) {
         e.preventDefault();
+        this.state.fieldData.news_content = CKEDITOR.instances.editor1.getData();//編輯器
+
         if(this.state.edit_type==1){
             jqPost(this.props.apiPathName,this.state.fieldData)
             .done(function(data, textStatus, jqXHRdata) {
@@ -118,8 +120,6 @@ var GirdForm = React.createClass({
             });
         }       
         else if(this.state.edit_type==2){
-            this.state.fieldData.news_content = CKEDITOR.instances.editor1.getData();//編輯器
-
             jqPut(this.props.apiPathName,this.state.fieldData)
             .done(function(data, textStatus, jqXHRdata) {
                 if(data.result){

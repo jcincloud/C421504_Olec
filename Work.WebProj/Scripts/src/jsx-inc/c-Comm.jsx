@@ -265,7 +265,7 @@ var InputDate = React.createClass({
 					name={this.props.field_name}
 					value={this.props.value!=undefined ? moment(this.props.value).format('YYYY-MM-DD'):''}
 					onChange={this.onChange}
-					required={false} />
+					required={true} />
 					<i className="fa-calendar form-control-feedback"></i>
 			</div>
 			);

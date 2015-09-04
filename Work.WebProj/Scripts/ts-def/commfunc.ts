@@ -149,17 +149,30 @@ function jqDelete(url: string, data: any): JQueryXHR {
     });
 }
 function tosMessage(title: string, message: string, type: emToastrType) {
-    if (type == emToastrType.success)
+    //if (type == emToastrType.success)
+    //    toastr.success(message, title);
+
+    //if (type == emToastrType.error)
+    //    toastr.error(message, title);
+
+    //if (type == emToastrType.warning)
+    //    toastr.warning(message, title);
+
+    //if (type == emToastrType.info)
+    //    toastr.info(message, title);
+
+    if (type == 1)
         toastr.success(message, title);
 
-    if (type == emToastrType.error)
+    if (type == 3)
         toastr.error(message, title);
 
-    if (type == emToastrType.warning)
+    if (type == 2)
         toastr.warning(message, title);
 
-    if (type == emToastrType.info)
+    if (type == 0)
         toastr.info(message, title);
+
 }
 function formatFileSize(byte_size: number): string {
     var get_size = byte_size;

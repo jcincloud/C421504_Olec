@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ProcCore.Business.DB0.ProductInfo
+@{
     ViewBag.Title = "產品內頁";
     ViewBag.BodyClass = "Products";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -15,64 +16,35 @@
 
 <aside>
     <!-- 點選該產品時加入 class="current" -->
-    <a href="~/Products" class="current">DIY glue stick</a>
-    <a href="~/Products">Industrial glue stick</a>
-    <a href="~/Products">Flame retardant glue stick</a>
-    <a href="~/Products">Plastic tile industry</a>
-    <a href="~/Products">CAR industry</a>
-    <a href="~/Products">Electronic industry</a>
-    <a href="~/Products">SHOE industry</a>
-    <a href="~/Products">PACKAGING</a>
-    <a href="~/Products">Cloth&Printing</a>
-    <a href="~/Products">Woodworking&Decoration</a>
-    <a href="~/Products">Tape&Label</a>
-    <a href="~/Products">Other application</a>
-    <a href="~/Products">Hot melt Pressure Sensitive Adhsive(HMPSA)</a>
-    <a href="~/Products">Solution Type hot melt Adhsive</a>
+    @foreach (var i in Model.list)
+    {
+        if (i.p_id == ViewBag.ID)
+        {
+            <a href="~/Products?id=@i.p_id" class="current">@i.p_name</a>
+        }
+        else
+        {
+            <a href="~/Products?id=@i.p_id">@i.p_name</a>
+        }
+    }
+    @*<a href="~/Products" class="current">DIY glue stick</a>
+        <a href="~/Products">Industrial glue stick</a>
+        <a href="~/Products">Flame retardant glue stick</a>
+        <a href="~/Products">Plastic tile industry</a>
+        <a href="~/Products">CAR industry</a>
+        <a href="~/Products">Electronic industry</a>
+        <a href="~/Products">SHOE industry</a>
+        <a href="~/Products">PACKAGING</a>
+        <a href="~/Products">Cloth&Printing</a>
+        <a href="~/Products">Woodworking&Decoration</a>
+        <a href="~/Products">Tape&Label</a>
+        <a href="~/Products">Other application</a>
+        <a href="~/Products">Hot melt Pressure Sensitive Adhsive(HMPSA)</a>
+        <a href="~/Products">Solution Type hot melt Adhsive</a>*@
 </aside>
 
 <article>
     <header>HOT MELT ADHESIVE DIVISION</header>
-    <h3>DIY glue stick</h3>
-    <table>
-        <caption>
-            NO.173 and NO.125 are most popular glue sticks. NO.173 is specially designed for users looking for excellent transparency, and NO.125 has better adhesion strength. In addition to NO.125 and NO.173, we also have many different grades of glue sticks that for DIY user with specific requirement.
-        </caption>
-        <tr>
-            <th>Item no.</th>
-            <th>Appearance</th>
-            <th>Viscosity</th>
-            <th>Soften Point</th>
-            <th>Remark</th>
-        </tr>
-        <tr>
-            <td>125</td>
-            <td>Translucent white</td>
-            <td>18000</td>
-            <td>85℃</td>
-            <td class="text-left">DIY, high adhesion strength</td>
-        </tr>
-        <tr>
-            <td>925</td>
-            <td>Yellow</td>
-            <td>11500</td>
-            <td>75℃</td>
-            <td class="text-left">DIY, high adhesion strength</td>
-        </tr>
-        <tr>
-            <td>173</td>
-            <td>Transparent Clear</td>
-            <td>25500</td>
-            <td>85℃</td>
-            <td class="text-left">DIY, perfect transparency</td>
-        </tr>
-        <tr>
-            <td>189</td>
-            <td>White</td>
-            <td>6250</td>
-            <td>65℃</td>
-            <td class="text-left">DIY, low melting temperature for children</td>
-        </tr>
-    </table>
-    <p class="tip">* Viscosity is showed at 160℃ with ASTM 3236 standard.</p>
+    <h3>@Model.Product.product_name</h3>
+    @Html.Raw(Model.Product.product_content)
 </article>

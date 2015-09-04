@@ -19,6 +19,9 @@ var MasterImageUpload = React.createClass({
 		};
 	},
 	componentDidUpdate:function(prevProps, prevState){
+		if(this.props.ParentEditType==2 && prevProps.ParentEditType){
+			this.createFileUpLoadObject();
+		}
 	},
 	componentDidMount:function(){
 		if(this.props.MainId>0){
@@ -174,7 +177,7 @@ var MasterImageUpload = React.createClass({
 		if (this.props.ParentEditType==1) {
 			imgButtonHtml=(
 				<div className="form-control">
-				<input type="file" id={'upload-btn-' + this.props.MainId} accept="image/*" disabled/>
+				<small className="col-xs-6 help-inline">請先按儲存後方可上傳圖片</small>
 				</div>
 				);
 		}else if(this.props.ParentEditType==2){

@@ -3,11 +3,11 @@
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
-CKEDITOR.editorConfig = function( config ) {
-	// Define changes to default configuration here. For example:
-	 config.language = 'zh';
+CKEDITOR.editorConfig = function (config) {
+    // Define changes to default configuration here. For example:
+    config.language = 'zh';
     // config.uiColor = '#AADC6E';
-
+    config.contentsCss = ['../Content/css/editor.css'];
     config.toolbar = [
         {
             name: "basicstyles",

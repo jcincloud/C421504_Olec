@@ -47,7 +47,7 @@ namespace ProcCore.Business.LogicConect
     #region Parm Section
     public enum ParmDefine
     {
-        Open, ValidDate, Apply_Max_Day, bufferNorth_Max, bufferSouth_Max, N_Max_joinnum, S_Max_joinnum, receiveMails, BccMails
+        Open, product_cn, product_us
     }
     #endregion
 

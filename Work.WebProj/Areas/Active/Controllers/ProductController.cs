@@ -1,5 +1,6 @@
 ﻿using DotWeb.CommSetup;
 using DotWeb.Controller;
+using ProcCore.Business.LogicConect;
 using ProcCore.HandleResult;
 using System;
 using System.IO;
@@ -22,12 +23,22 @@ namespace DotWeb.Areas.Active.Controllers
 
         public string aj_Init()
         {
+            var open = openLogic();
             using (var db0 = getDB0())
             {
+                string info = string.Empty;
+                //if (System.Globalization.CultureInfo.CurrentCulture.Name == "zh-TW")
+                //{
+                //    info = (string)open.getParmValue(ParmDefine.product_cn);
+                //}
+                //else
+                //{
+                //    info = (string)open.getParmValue(ParmDefine.product_us);
+                //}
                 return defJSON(new
                 {
-                    // options_equipment_category = db0.Equipment_Category.OrderBy(x=>x.sort)
-                });
+                    tmp_info = (string)open.getParmValue(ParmDefine.product_us)
+            });
             }
         }
         #endregion
