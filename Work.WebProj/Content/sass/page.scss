@@ -182,10 +182,8 @@ article {
 
 // == about us
 //
-.#{nth($pages, 2)} table {
-    width: cp(400px);
-    min-width: 400px;
-    margin-left: 15px;
+.#{nth($pages, 2)} img.float-r {
+    padding-left: 15px;
 }
 
 // == products
