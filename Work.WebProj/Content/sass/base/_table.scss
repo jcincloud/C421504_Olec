@@ -6,9 +6,19 @@ $table-padding: 10px 15px;
 -----------------------------------------------------------------------*/
 table {
     // background-color: color(table-bg);
+    border: none;
+    border-top: 3px solid color(table-border);
     border-bottom: 3px solid color(table-border);
+    background: #fff;
     margin-bottom: $line-height-computed;
 }
+
+tbody {
+    border: none;
+    display: table-row-group;
+    border-left: 1px solid #fff;
+}
+
 th, td {
     padding: nth($table-padding, 1);
     border-bottom: 1px solid color(table-border);

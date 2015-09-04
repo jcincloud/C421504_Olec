@@ -303,8 +303,16 @@ address {
 /*      table
 -----------------------------------------------------------------------*/
 table {
+  border: none;
+  border-top: 3px solid #b3e02a;
   border-bottom: 3px solid #b3e02a;
+  background: #fff;
   margin-bottom: 20px; }
+
+tbody {
+  border: none;
+  display: table-row-group;
+  border-left: 1px solid #fff; }
 
 th, td {
   padding: 10px;

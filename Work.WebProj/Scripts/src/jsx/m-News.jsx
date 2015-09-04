@@ -1,8 +1,8 @@
 ﻿var GridRow = React.createClass({
-    mixins: [React.addons.LinkedStateMixin], 
-    getInitialState: function() {  
-        return { 
-        };  
+    mixins: [React.addons.LinkedStateMixin],
+    getInitialState: function() {
+        return {
+        };
     },
     delCheck:function(i,chd){
         this.props.delCheck(i,chd);
@@ -36,8 +36,8 @@
 
 //主表單
 var GirdForm = React.createClass({
-    mixins: [React.addons.LinkedStateMixin], 
-    getInitialState: function() {  
+    mixins: [React.addons.LinkedStateMixin],
+    getInitialState: function() {
         return {
             gridData:{rows:[],page:1},
             fieldData:{},
@@ -45,17 +45,17 @@ var GirdForm = React.createClass({
             edit_type:0,
             checkAll:false,
             category:[]
-        };  
+        };
     },
     getDefaultProps:function(){
-        return{ 
+        return{
             fdName:'fieldData',
             gdName:'searchData',
             apiPathName:gb_approot+'api/News',
             initPathName:gb_approot+'Active/NewsData/aj_Init'
 
         };
-    },  
+    },
     componentWillMount:function(){
         //在輸出前觸發，只執行一次如果您在這個方法中呼叫 setState() ，會發現雖然 render() 再次被觸發了但它還是只執行一次。
     },
@@ -118,7 +118,7 @@ var GirdForm = React.createClass({
             .fail(function( jqXHR, textStatus, errorThrown ) {
                 showAjaxError(errorThrown);
             });
-        }       
+        }
         else if(this.state.edit_type==2){
             jqPut(this.props.apiPathName,this.state.fieldData)
             .done(function(data, textStatus, jqXHRdata) {
@@ -153,7 +153,7 @@ var GirdForm = React.createClass({
             return;
         }
 
-        jqDelete(this.props.apiPathName + '?' + ids.join('&'),{})           
+        jqDelete(this.props.apiPathName + '?' + ids.join('&'),{})
         .done(function(data, textStatus, jqXHRdata) {
             if(data.result){
                 tosMessage(null,'刪除完成',1);
@@ -284,7 +284,7 @@ var GirdForm = React.createClass({
                                 <div className="form-inline">
                                         <div className="form-group">
                                             <label>語系</label> { }
-                                            <select className="form-control input-sm" 
+                                            <select className="form-control input-sm"
                                                 value={searchData.i_Lang}
                                                 onChange={this.changeGDValue.bind(this,'i_Lang')}
                                             >
@@ -298,7 +298,7 @@ var GirdForm = React.createClass({
                                         </div> { }
                                     <div className="form-group">
                                         <label>標題</label> { }
-                                        <input type="text" className="form-control input-sm" 
+                                        <input type="text" className="form-control input-sm"
                                         value={searchData.title}
                                         onChange={this.changeGDValue.bind(this,'title')}
                                         placeholder="請輸入關鍵字..." /> { }
@@ -326,21 +326,21 @@ var GirdForm = React.createClass({
                             <tbody>
                                 {
                                 this.state.gridData.rows.map(function(itemData,i) {
-                                return <GridRow 
+                                return <GridRow
                                 key={i}
                                 ikey={i}
-                                primKey={itemData.news_id} 
-                                itemData={itemData} 
+                                primKey={itemData.news_id}
+                                itemData={itemData}
                                 delCheck={this.delCheck}
                                 updateType={this.updateType}
-                                category={this.state.category}                          
+                                category={this.state.category}
                                 />;
                                 }.bind(this))
                                 }
                             </tbody>
                         </table>
                     </div>
-                    <GridNavPage 
+                    <GridNavPage
                     StartCount={this.state.gridData.startcount}
                     EndCount={this.state.gridData.endcount}
                     RecordCount={this.state.gridData.records}
@@ -370,7 +370,7 @@ var GirdForm = React.createClass({
                     <div className="form-group">
                         <label className="col-xs-1 control-label text-danger">語系</label>
                         <div className="col-xs-3">
-                            <select className="form-control" 
+                            <select className="form-control"
                                 value={fieldData.i_Lang}
                                 onChange={this.changeFDValue.bind(this,'i_Lang')}
                                 required>
@@ -379,15 +379,15 @@ var GirdForm = React.createClass({
                                             return <option key={itemData.val} value={itemData.val}>{itemData.label}</option>;
                                         })
                                     }
-                            </select>                       
+                            </select>
                         </div>
                     </div>
-                    
+
                     <div className="form-group">
                         <label className="col-xs-1 control-label">代表圖</label>
                         <div className="col-xs-6">
-                            <MasterImageUpload 
-                            FileKind="Photo1" 
+                            <MasterImageUpload
+                            FileKind="Photo1"
                             MainId={fieldData.news_id}
                             ParentEditType={this.state.edit_type}
                             url_upload={gb_approot + 'Active/NewsData/axFUpload'}
@@ -402,8 +402,8 @@ var GirdForm = React.createClass({
                     {/*<div className="form-group">
                         <label className="col-xs-1 control-label">內頁圖片</label>
                         <div className="col-xs-6">
-                            <MasterImageUpload 
-                            FileKind="Photo2" 
+                            <MasterImageUpload
+                            FileKind="Photo2"
                             MainId={fieldData.news_id}
                             ParentEditType={this.state.edit_type}
                             url_upload={gb_approot + 'Active/NewsData/axFUpload'}
@@ -418,26 +418,26 @@ var GirdForm = React.createClass({
                     <div className="form-group">
                         <label className="col-xs-1 control-label text-danger">標題</label>
                         <div className="col-xs-6">
-                            <input type="text" 
-                            className="form-control"    
+                            <input type="text"
+                            className="form-control"
                             value={fieldData.news_title}
                             onChange={this.changeFDValue.bind(this,'news_title')}
                             maxLength="64"
-                            required />                     
+                            required />
                         </div>
                         <small className="col-xs-4 help-inline">最多64字</small>
                     </div>
 
-                    
+
 
                     <div className="form-group">
                         <div className="has-feedback">
                             <label className="col-xs-1 control-label text-danger">日期</label>
                             <div className="col-xs-3">
                                 <span className="has-feedback">
-                                    <InputDate id="news_date" 
-                                    onChange={this.changeFDValue} 
-                                    field_name="news_date" 
+                                    <InputDate id="news_date"
+                                    onChange={this.changeFDValue}
+                                    field_name="news_date"
                                     value={fieldData.news_date} />
                                 </span>
                             </div>
@@ -446,10 +446,10 @@ var GirdForm = React.createClass({
                         <div className="col-xs-2">
                             <div className="radio-inline">
                                 <label>
-                                    <input type="radio" 
+                                    <input type="radio"
                                             name="i_Hide"
                                             value={true}
-                                            checked={fieldData.i_Hide===true} 
+                                            checked={fieldData.i_Hide===true}
                                             onChange={this.changeFDValue.bind(this,'i_Hide')}
                                     />
                                     <span>隱藏</span>
@@ -457,10 +457,10 @@ var GirdForm = React.createClass({
                             </div>
                             <div className="radio-inline">
                                 <label>
-                                    <input type="radio" 
+                                    <input type="radio"
                                             name="i_Hide"
                                             value={false}
-                                            checked={fieldData.i_Hide===false} 
+                                            checked={fieldData.i_Hide===false}
                                             onChange={this.changeFDValue.bind(this,'i_Hide')}
                                             />
                                     <span>顯示</span>
@@ -472,24 +472,27 @@ var GirdForm = React.createClass({
                     <div className="form-group">
                         {/*<label className="col-xs-1 control-label">排序</label>
                         <div className="col-xs-2">
-                            <input type="number" 
-                                    className="form-control"    
+                            <input type="number"
+                                    className="form-control"
                                     value={fieldData.sort}
                                     onChange={this.changeFDValue.bind(this,'sort')}
                                     maxLength="64"
-                                    required />                     
+                                    required />
                         </div>
                         <small className="col-xs-3 help-inline">數字越大越前面</small>*/}
                     </div>
 
                     <div className="form-group">
                         <label className="col-xs-1 control-label">簡介</label>
-                            <div className="col-xs-10">
-                                <textarea type="date" className="form-control" rows="3"
-                                    value={fieldData.news_intro}
-                                    onChange={this.changeFDValue.bind(this,'news_intro')}
-                                    maxLength="250"/>
-                            </div>
+                        <div className="col-xs-6">
+                            <textarea type="date" className="form-control" rows="4"
+                                value={fieldData.news_intro}
+                                onChange={this.changeFDValue.bind(this,'news_intro')}
+                                maxLength="250"/>
+                        </div>
+                        <div className="col-xs-5 text-danger">
+                            列表用簡介(只顯示在列表)，最多40字
+                        </div>
                     </div>
 
                     <div className="form-group">
@@ -499,7 +502,7 @@ var GirdForm = React.createClass({
                                     value={fieldData.news_content}
                                     onChange={this.changeFDValue.bind(this,'news_content')} />
                             </div>
-                    </div>              
+                    </div>
 
                     <div className="form-action">
                         <div className="col-xs-4 col-xs-offset-1">

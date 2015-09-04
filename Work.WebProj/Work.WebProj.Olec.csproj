@@ -331,12 +331,10 @@
     <Content Include="Content\bootstrap\sass\_bootstrap-compass.scss" />
     <Content Include="Content\bootstrap\sass\_bootstrap-mincer.scss" />
     <Content Include="Content\bootstrap\sass\_bootstrap-sprockets.scss" />
-    <Content Include="Content\css\bootstrap-datetimepicker-build.css" />
+    <Content Include="Content\css\editor.css" />
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\page.css" />
     <Content Include="Content\css\swiper.css" />
-    <Content Include="Content\css\swiper.min.css" />
-    <Content Include="Content\css\toastr.css" />
     <Content Include="Content\font\MElleHK.otf" />
     <Content Include="Content\font\MElleHK.ttf" />
     <Content Include="Content\font\MElleHK.woff" />
