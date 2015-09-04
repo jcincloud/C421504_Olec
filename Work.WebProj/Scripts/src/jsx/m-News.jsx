@@ -488,7 +488,7 @@ var GirdForm = React.createClass({
                             <textarea type="date" className="form-control" rows="4"
                                 value={fieldData.news_intro}
                                 onChange={this.changeFDValue.bind(this,'news_intro')}
-                                maxLength="250"/>
+                                maxLength="40"/>
                         </div>
                         <div className="col-xs-5 text-danger">
                             列表用簡介(只顯示在列表)，最多40字
