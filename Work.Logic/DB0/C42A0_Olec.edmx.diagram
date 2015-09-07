@@ -22,8 +22,8 @@
         <AssociationConnector Association="C42A0_OlecModel.FK_AspNetUsers_Department" ManuallyRouted="false" />
         <AssociationConnector Association="C42A0_OlecModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="C42A0_OlecModel.MenuRole" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="C42A0_OlecModel.News" Width="1.5" PointX="8.375" PointY="10.75" />
         <EntityTypeShape EntityType="C42A0_OlecModel.Product" Width="1.5" PointX="10.375" PointY="10.75" />
+        <EntityTypeShape EntityType="C42A0_OlecModel.News" Width="1.5" PointX="12.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

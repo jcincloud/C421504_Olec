@@ -81,6 +81,7 @@ namespace DotWeb.Api
                 item.news_intro = md.news_intro;
                 item.news_date = md.news_date;
                 item.news_content = md.news_content;
+                item.stereotype = md.stereotype;
                 item.i_Lang = md.i_Lang;
                 item.i_Hide = md.i_Hide;
 

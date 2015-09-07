@@ -53,7 +53,7 @@ namespace DotWeb.Areas.Base.Controllers
             SiteMaps.ReleaseSiteMap();
 
             ViewBag.BodyClass = "Login";
-
+            ViewBag.Year = DateTime.Now.Year;
             return View("index");
         }
         [AllowAnonymous]

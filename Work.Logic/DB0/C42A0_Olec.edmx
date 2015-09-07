@@ -101,7 +101,7 @@
           </Key>
           <Property Name="ParmName" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="ParmType" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="S" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="S" Type="text" Nullable="false" />
           <Property Name="I" Type="int" Nullable="false" />
           <Property Name="F" Type="smallmoney" Nullable="false" />
           <Property Name="D" Type="datetime" Nullable="false" />
@@ -160,6 +160,7 @@
             <PropertyRef Name="news_id" />
           </Key>
           <Property Name="news_id" Type="int" Nullable="false" />
+          <Property Name="stereotype" Type="int" Nullable="false" />
           <Property Name="news_title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="news_date" Type="datetime" Nullable="false" />
           <Property Name="news_intro" Type="nvarchar" MaxLength="250" />
@@ -429,7 +430,7 @@
           </Key>
           <Property Name="ParmName" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ParmType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="S" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="S" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="I" Type="Int32" Nullable="false" />
           <Property Name="F" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="D" Type="DateTime" Nullable="false" Precision="3" />
@@ -557,27 +558,9 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
-          <EntitySet Name="News" EntityType="C42A0_OlecModel.News" />
           <EntitySet Name="Product" EntityType="C42A0_OlecModel.Product" />
+          <EntitySet Name="News" EntityType="C42A0_OlecModel.News" />
         </EntityContainer>
-        <EntityType Name="News">
-          <Key>
-            <PropertyRef Name="news_id" />
-          </Key>
-          <Property Name="news_id" Type="Int32" Nullable="false" />
-          <Property Name="news_title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="news_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="news_intro" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="news_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
-          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_InsertDeptID" Type="Int32" />
-          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_UpdateDeptID" Type="Int32" />
-          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="product_id" />
@@ -594,6 +577,25 @@
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="news_id" />
+          </Key>
+          <Property Name="news_id" Type="Int32" Nullable="false" />
+          <Property Name="stereotype" Type="Int32" Nullable="false" />
+          <Property Name="news_title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="news_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="news_intro" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="news_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -761,25 +763,6 @@
               <ScalarProperty Name="menu_id" ColumnName="menu_id" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="C42A0_OlecModel.News">
-              <MappingFragment StoreEntitySet="News">
-                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
-                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
-                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
-                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
-                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
-                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
-                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
-                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
-                <ScalarProperty Name="news_content" ColumnName="news_content" />
-                <ScalarProperty Name="news_intro" ColumnName="news_intro" />
-                <ScalarProperty Name="news_date" ColumnName="news_date" />
-                <ScalarProperty Name="news_title" ColumnName="news_title" />
-                <ScalarProperty Name="news_id" ColumnName="news_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="C42A0_OlecModel.Product">
               <MappingFragment StoreEntitySet="Product">
@@ -795,6 +778,26 @@
                 <ScalarProperty Name="product_content" ColumnName="product_content" />
                 <ScalarProperty Name="product_name" ColumnName="product_name" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="C42A0_OlecModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="news_content" ColumnName="news_content" />
+                <ScalarProperty Name="news_intro" ColumnName="news_intro" />
+                <ScalarProperty Name="news_date" ColumnName="news_date" />
+                <ScalarProperty Name="news_title" ColumnName="news_title" />
+                <ScalarProperty Name="stereotype" ColumnName="stereotype" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
