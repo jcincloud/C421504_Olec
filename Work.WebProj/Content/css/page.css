@@ -894,6 +894,9 @@ figure {
     margin-top: 12px;
     font-size: 0.8125em; }
 
+.News article img.float-r, .News article img.float-l {
+  max-width: 54.61768%; }
+
 .ContactUs main iframe {
   width: 61.56902%;
   height: 320px; }

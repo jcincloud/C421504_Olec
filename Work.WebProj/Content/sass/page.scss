@@ -236,6 +236,12 @@ figure {
     }
 }
 
+.#{nth($pages, 4)} article {
+    img.float-r, img.float-l {
+        max-width: cp(550px);
+    }
+}
+
 // == contact
 .#{nth($pages, 5)} main {
     iframe {

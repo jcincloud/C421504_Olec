@@ -18,8 +18,15 @@
 <article>
     <header>@Model.item.news_title</header>
     <h4>@Model.item.news_date.ToString("yyyy/MM/dd")</h4>
-    <!-- 下為後台編輯資料，編輯方式使用富學行程樣版 -->
+
+    <!-- 版型一 圖置右 -->
+    <img src="@Model.item.imgsrc" alt="插圖" class="float-r">
     @Html.Raw(Model.item.news_content)
-    <img src="@Model.item.imgsrc" alt="插圖">
+
+    <!-- 版型二 圖置左-->
+    <!--
+    <img src="@Model.item.imgsrc" alt="插圖" class="float-l">
+    @Html.Raw(Model.item.news_content)
+    -->
 </article>
 <div class="text-right"><a href="~/News" class="btn">回列表</a></div>
