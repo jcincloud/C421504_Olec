@@ -796,6 +796,8 @@
     <Content Include="_Code\CSS\css\popup.css" />
     <Content Include="_Code\CSS\fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="_Code\CSS\fonts\fontAwesome\fontawesome-webfont.svg" />
+    <Content Include="_Code\Images\editor_layout2.gif" />
+    <Content Include="_Code\Images\editor_layout3.gif" />
     <Content Include="_Code\RPTExcel\DownExcel.xls" />
     <Content Include="_Code\RPTExcel\Equipment.xls" />
     <Content Include="_Code\RPTExcel\Apply.xls" />
@@ -1039,7 +1041,6 @@
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="_Code\CReport\" />
     <Folder Include="_Code\CSS\css\fa\" />
-    <Folder Include="_Code\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
