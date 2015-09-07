@@ -943,6 +943,7 @@
     <Content Include="Views\Products\NoData.cshtml" />
     <Content Include="Views\Products\NoData.en-US.cshtml" />
     <Content Include="Views\Shared\Layout.en-US.cshtml" />
+    <Content Include="Views\AboutUs\AboutUs.en-US.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -1102,7 +1103,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3185</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
