@@ -19,14 +19,19 @@
     <header>@Model.item.news_title</header>
     <h4>@Model.item.news_date.ToString("yyyy/MM/dd")</h4>
 
-    <!-- 版型一 圖置右 -->
-    <img src="@Model.item.imgsrc" alt="插圖" class="float-r">
-    @Html.Raw(Model.item.news_content)
 
-    <!-- 版型二 圖置左-->
-    <!--
-    <img src="@Model.item.imgsrc" alt="插圖" class="float-l">
-    @Html.Raw(Model.item.news_content)
-    -->
+    @if (Model.item.stereotype == 1)
+    {
+        <!-- 版型一 圖置右 -->
+        <img src="@Model.item.imgsrc" alt="插圖" class="float-r">
+        @Html.Raw(Model.item.news_content)
+    }
+    else if (Model.item.stereotype == 2)
+    {
+        <!-- 版型二 圖置左-->
+        <img src="@Model.item.imgsrc" alt="插圖" class="float-l">
+        @Html.Raw(Model.item.news_content)
+    }
+
 </article>
 <div class="text-right"><a href="~/News" class="btn">回列表</a></div>
