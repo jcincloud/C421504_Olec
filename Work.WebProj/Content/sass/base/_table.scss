@@ -7,9 +7,7 @@ $table-padding: 10px 15px;
 table {
     // background-color: color(table-bg);
     border: none;
-    border-top: 3px solid color(table-border);
     border-bottom: 3px solid color(table-border);
-    background: #fff;
     margin-bottom: $line-height-computed;
 }
 

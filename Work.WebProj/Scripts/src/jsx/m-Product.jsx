@@ -1,8 +1,8 @@
 ﻿var GridRow = React.createClass({
-    mixins: [React.addons.LinkedStateMixin], 
-    getInitialState: function() {  
-        return { 
-        };  
+    mixins: [React.addons.LinkedStateMixin],
+    getInitialState: function() {
+        return {
+        };
     },
     delCheck:function(i,chd){
         this.props.delCheck(i,chd);
@@ -35,8 +35,8 @@
 
 //主表單
 var GirdForm = React.createClass({
-    mixins: [React.addons.LinkedStateMixin], 
-    getInitialState: function() {  
+    mixins: [React.addons.LinkedStateMixin],
+    getInitialState: function() {
         return {
             gridData:{rows:[],page:1},
             fieldData:{},
@@ -44,17 +44,17 @@ var GirdForm = React.createClass({
             edit_type:0,
             checkAll:false,
             temp_info:null
-        };  
+        };
     },
     getDefaultProps:function(){
-        return{ 
+        return{
             fdName:'fieldData',
             gdName:'searchData',
             apiPathName:gb_approot+'api/Product',
             initPathName:gb_approot+'Active/Product/aj_Init'
 
         };
-    },  
+    },
     componentWillMount:function(){
         //在輸出前觸發，只執行一次如果您在這個方法中呼叫 setState() ，會發現雖然 render() 再次被觸發了但它還是只執行一次。
     },
@@ -98,8 +98,8 @@ var GirdForm = React.createClass({
         //元件被從 DOM 卸載之前執行，通常我們在這個方法清除一些不再需要地物件或 timer。
     },
     handleSubmit: function(e) {
-        e.preventDefault();  
-        
+        e.preventDefault();
+
         this.state.fieldData.ProductStandard = this.refs.subGridForm.state.gridSubData;
 
         if(this.state.edit_type==1){
@@ -115,7 +115,7 @@ var GirdForm = React.createClass({
             .fail(function( jqXHR, textStatus, errorThrown ) {
                 showAjaxError(errorThrown);
             });
-        }       
+        }
         else if(this.state.edit_type==2){
             jqPut(this.props.apiPathName,this.state.fieldData)
             .done(function(data, textStatus, jqXHRdata) {
@@ -150,7 +150,7 @@ var GirdForm = React.createClass({
             return;
         }
 
-        jqDelete(this.props.apiPathName + '?' + ids.join('&'),{})           
+        jqDelete(this.props.apiPathName + '?' + ids.join('&'),{})
         .done(function(data, textStatus, jqXHRdata) {
             if(data.result){
                 tosMessage(null,'刪除完成',1);
@@ -279,7 +279,7 @@ var GirdForm = React.createClass({
                                 <div className="form-inline">
                                         <div className="form-group">
                                             <label>語系</label> { }
-                                            <select className="form-control input-sm" 
+                                            <select className="form-control input-sm"
                                                 value={searchData.i_Lang}
                                                 onChange={this.changeGDValue.bind(this,'i_Lang')}
                                             >
@@ -293,7 +293,7 @@ var GirdForm = React.createClass({
                                         </div> { }
                                     <div className="form-group">
                                         <label>標題</label> { }
-                                        <input type="text" className="form-control input-sm" 
+                                        <input type="text" className="form-control input-sm"
                                         value={searchData.title}
                                         onChange={this.changeGDValue.bind(this,'title')}
                                         placeholder="請輸入關鍵字..." /> { }
@@ -320,21 +320,21 @@ var GirdForm = React.createClass({
                             <tbody>
                                 {
                                 this.state.gridData.rows.map(function(itemData,i) {
-                                return <GridRow 
+                                return <GridRow
                                 key={i}
                                 ikey={i}
-                                primKey={itemData.product_id} 
-                                itemData={itemData} 
+                                primKey={itemData.product_id}
+                                itemData={itemData}
                                 delCheck={this.delCheck}
                                 updateType={this.updateType}
-                                category={this.state.category}                          
+                                category={this.state.category}
                                 />;
                                 }.bind(this))
                                 }
                             </tbody>
                         </table>
                     </div>
-                    <GridNavPage 
+                    <GridNavPage
                     StartCount={this.state.gridData.startcount}
                     EndCount={this.state.gridData.endcount}
                     RecordCount={this.state.gridData.records}
@@ -358,13 +358,13 @@ var GirdForm = React.createClass({
                     <li><i className="fa-list-alt"></i> {this.props.MenuName}</li>
                 </ul>
                 <h4 className="title">{this.props.Caption} 資料維護</h4>
-                <div className="alert alert-warning"><p><strong className="text-danger">紅色標題</strong> 為必填項目。</p></div>
+                <div className="alert alert-warning"><p><strong className="text-danger">* </strong> 為必填項目。</p></div>
                 <form className="form-horizontal" onSubmit={this.handleSubmit}>
 
                     <div className="form-group">
-                        <label className="col-xs-1 control-label text-danger">語系</label>
+                        <label className="col-xs-1 control-label text-danger">* 語系</label>
                         <div className="col-xs-3">
-                            <select className="form-control" 
+                            <select className="form-control"
                                 value={fieldData.i_Lang}
                                 onChange={this.changeFDValue.bind(this,'i_Lang')}
                                 required>
@@ -373,64 +373,64 @@ var GirdForm = React.createClass({
                                             return <option key={itemData.val} value={itemData.val}>{itemData.label}</option>;
                                         })
                                     }
-                            </select>                       
+                            </select>
                         </div>
                     </div>
-                    
+
                     <div className="form-group">
-                        <label className="col-xs-1 control-label text-danger">標題</label>
+                        <label className="col-xs-1 control-label text-danger">* 產品名稱</label>
                         <div className="col-xs-5">
-                            <input type="text" 
-                            className="form-control"    
+                            <input type="text"
+                            className="form-control"
                             value={fieldData.product_name}
                             onChange={this.changeFDValue.bind(this,'product_name')}
                             maxLength="64"
-                            required />                     
+                            required />
                         </div>
                         <small className="col-xs-4 help-inline">最多64字</small>
                     </div>
 
-                    
+
 
                     <div className="form-group">
-                        <label className="col-xs-1 control-label">狀態</label>
+                        <label className="col-xs-1 control-label">前台顯示</label>
                         <div className="col-xs-2">
                             <div className="radio-inline">
                                 <label>
-                                    <input type="radio" 
-                                            name="i_Hide"
-                                            value={true}
-                                            checked={fieldData.i_Hide===true} 
-                                            onChange={this.changeFDValue.bind(this,'i_Hide')}
-                                    />
-                                    <span>隱藏</span>
-                                </label>
-                            </div>
-                            <div className="radio-inline">
-                                <label>
-                                    <input type="radio" 
+                                    <input type="radio"
                                             name="i_Hide"
                                             value={false}
-                                            checked={fieldData.i_Hide===false} 
+                                            checked={fieldData.i_Hide===false}
                                             onChange={this.changeFDValue.bind(this,'i_Hide')}
                                             />
                                     <span>顯示</span>
                                 </label>
                             </div>
+                            <div className="radio-inline">
+                                <label>
+                                    <input type="radio"
+                                            name="i_Hide"
+                                            value={true}
+                                            checked={fieldData.i_Hide===true}
+                                            onChange={this.changeFDValue.bind(this,'i_Hide')}
+                                    />
+                                    <span>隱藏</span>
+                                </label>
+                            </div>
                         </div>
-                        <label className="col-xs-1 control-label">排序</label>
+                        <label className="col-xs-1 control-label">列表排序</label>
                         <div className="col-xs-2">
-                            <input type="number" 
-                                    className="form-control"    
+                            <input type="number"
+                                    className="form-control"
                                     value={fieldData.sort}
                                     onChange={this.changeFDValue.bind(this,'sort')}
-                                    maxLength="64" />                     
+                                    maxLength="64" />
                         </div>
                         <small className="col-xs-3 help-inline">數字越大越前面</small>
                     </div>
 
                     <div className="form-group">
-                        <label className="col-xs-1 control-label">類別介紹</label>
+                        <label className="col-xs-1 control-label">產品簡介</label>
                         <div className="col-xs-6">
                             <textarea type="date" className="form-control" rows="4"
                                 value={fieldData.product_info}
@@ -443,7 +443,7 @@ var GirdForm = React.createClass({
                     </div>
 
                     <div className="form-group">
-                        <label className="col-xs-1 control-label">注意事項</label>
+                        <label className="col-xs-1 control-label">備註</label>
                         <div className="col-xs-6">
                             <textarea type="date" className="form-control" rows="4"
                                 value={fieldData.product_note}
@@ -453,13 +453,13 @@ var GirdForm = React.createClass({
                         <div className="col-xs-5 text-danger">
                             最多250字
                         </div>
-                    </div>      
+                    </div>
 
-                    <SubGirdForm 
-                    MainId={fieldData.product_id} 
+                    <SubGirdForm
+                    MainId={fieldData.product_id}
                     handleSubmit={this.handleSubmit}
-                    ref="subGridForm" />                   
-                    
+                    ref="subGridForm" />
+
                     <div className="form-action">
                         <div className="col-xs-4 col-xs-offset-1">
                             <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
@@ -479,16 +479,16 @@ var GirdForm = React.createClass({
 
 //明細列表
 var SubGirdForm = React.createClass({
-    mixins: [React.addons.LinkedStateMixin,SortableMixin], 
-    getInitialState: function() {  
+    mixins: [React.addons.LinkedStateMixin,SortableMixin],
+    getInitialState: function() {
         return {
             gridSubData:[],
             refreshFileList:false,
             newId:0
-        };  
+        };
     },
     getDefaultProps:function(){
-        return{ 
+        return{
             fdName:'fieldData',
             gdName:'searchData',
             apiSubPathName:gb_approot+'api/ProductStandard',
@@ -522,7 +522,7 @@ var SubGirdForm = React.createClass({
             return;
         }
 
-        jqDelete(this.props.apiSubPathName+'?' + ids.join('&'),{})          
+        jqDelete(this.props.apiSubPathName+'?' + ids.join('&'),{})
         .done(function(data, textStatus, jqXHRdata) {
             if(data.result){
                 tosMessage(null,'刪除完成',1);
@@ -615,7 +615,7 @@ var SubGirdForm = React.createClass({
             });
         }
     },
-    handleSort: function (evt) { 
+    handleSort: function (evt) {
         var newState = this.state;
         var n = newState.gridSubData.length;
         for (var i in newState.gridSubData) {
@@ -643,7 +643,9 @@ var SubGirdForm = React.createClass({
         var fieldData = this.state.fieldData;
         outHtml=
         (
-            <div>
+            <section className="format">
+                <h4>產品規格列表</h4>
+
                 <div className="alert alert-warning">
                     <button type="button" className="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
                     <ol>
@@ -656,29 +658,28 @@ var SubGirdForm = React.createClass({
                     <tr>
                         <th></th>
                         <th>刪除</th>
-                        <th className="text-danger text-center">Item no.(編號)<small className="help-inline">最多10字</small></th>
-                        <th className="text-danger text-center">Appearance(外觀)<small className="help-inline">最多50字</small></th>
-                        <th className="text-danger text-center">Viscosity(黏性)</th>
-                        <th className="text-danger text-center">Soften Point(軟化點)</th>
-                        <th className="text-center">Remark(備註)<small className="help-inline">最多200字</small></th>
+                        <th className="text-danger text-center">* Item no. <small>(最多10字)</small></th>
+                        <th className="text-danger text-center">* Appearance <small>(最多50字)</small></th>
+                        <th className="text-danger text-center">* Viscosity</th>
+                        <th className="text-danger text-center">* Soften Point</th>
+                        <th className="text-center">Remark <small>(最多200字)</small></th>
                     </tr>
 
                     <tbody ref="SortForm">
                     {
                         this.state.gridSubData.map(function(itemData,i) {
                             return <SubGirdField key={itemData.standard_id} ikey={i} fieldData={itemData}
-                            SetSubInputValue={this.setSubInputValue} 
+                            SetSubInputValue={this.setSubInputValue}
                             DeleteItem={this.deleteItem}
-                            refreshFileList={this.state.refreshFileList}
-                            />;
+                            refreshFileList={this.state.refreshFileList}/>;
                         }.bind(this))
                     }
                     </tbody>
                 </table>
 
-                <button className="btn" type="button" onClick={this.creatNewData.bind(this)}>新增規格</button>
+                <button className="btn btn-add" type="button" onClick={this.creatNewData.bind(this)}><i className="fa-plus"></i> 新增規格列表</button>
 
-            </div>
+            </section>
         );
         return outHtml;
     }
@@ -686,19 +687,19 @@ var SubGirdForm = React.createClass({
 
 //明細表單
 var SubGirdField = React.createClass({
-    mixins: [React.addons.LinkedStateMixin], 
-    getInitialState: function() {  
+    mixins: [React.addons.LinkedStateMixin],
+    getInitialState: function() {
         return {
-            fieldData:this.props.fieldData        
-        };  
+            fieldData:this.props.fieldData
+        };
     },
     getDefaultProps:function(){
-        return{ 
+        return{
             subHtml:null
 
         };
     },
-    componentDidMount:function(){        
+    componentDidMount:function(){
         if(this.state.fieldData.edit_state==0){
             this.state.fieldData.sort=this.props.ikey;//排序預設跟資料順序一樣
         }
@@ -729,54 +730,40 @@ var SubGirdField = React.createClass({
                     <button className="btn-link text-danger" title="刪除" onClick={this.deleteItem.bind(this,this.props.ikey)}><i className="fa-times"></i></button>
                 </td>
                 <td>
-                    <div className="col-xs-12">
-                        <input type="text" 
-                        className="form-control"    
-                        value={fieldData.item_no}
-                        onChange={this.changeFDValue.bind(this,'item_no')}
-                        maxLength="10"
-                        required />                     
-                    </div>
+                    <input type="text"
+                    className="form-control"
+                    value={fieldData.item_no}
+                    onChange={this.changeFDValue.bind(this,'item_no')}
+                    maxLength="10"
+                    required />
                 </td>
                 <td>
-                    <div className="col-xs-12">
-                        <input type="text" 
-                        className="form-control"    
-                        value={fieldData.appearance}
-                        onChange={this.changeFDValue.bind(this,'appearance')}
-                        maxLength="50"
-                        required />                     
-                    </div>
+                    <input type="text"
+                    className="form-control"
+                    value={fieldData.appearance}
+                    onChange={this.changeFDValue.bind(this,'appearance')}
+                    maxLength="50"
+                    required />
                 </td>
                 <td>
-                    <div className="col-xs-12">
-                        <input type="number" 
-                        className="form-control"    
-                        value={fieldData.viscosity}
-                        onChange={this.changeFDValue.bind(this,'viscosity')}
-                        required />                     
-                    </div>
+                    <input type="number"
+                    className="form-control"
+                    value={fieldData.viscosity}
+                    onChange={this.changeFDValue.bind(this,'viscosity')}
+                    required />
                 </td>
                 <td>
-                    <div className="col-xs-11">
-                        <input type="number" 
-                        className="form-control"    
-                        value={fieldData.soften_point}
-                        onChange={this.changeFDValue.bind(this,'soften_point')}
-                        required />             
-                    </div>
-                    <div className="col-xs-1">
-                        ℃
-                    </div>
+                    <input type="number"
+                    value={fieldData.soften_point}
+                    onChange={this.changeFDValue.bind(this,'soften_point')}
+                    required /> ℃
                 </td>
                 <td className="text-left">
-                    <div className="col-xs-12">
-                        <input type="text" 
-                        className="form-control"    
-                        value={fieldData.remark}
-                        onChange={this.changeFDValue.bind(this,'remark')}
-                        maxLength="200" />                     
-                    </div>
+                    <input type="text"
+                    className="form-control"
+                    value={fieldData.remark}
+                    onChange={this.changeFDValue.bind(this,'remark')}
+                    maxLength="200" />
                 </td>
             </tr>
         );
