@@ -2,6 +2,7 @@
  * @license Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
+CKFinder.SetupCKEditor(null, "../ckfinder/");
 
 CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
@@ -38,4 +39,8 @@ CKEDITOR.editorConfig = function (config) {
             name: "clipboard",
             items: ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "Undo", "Redo"]
         }];
+
+    config.filebrowserBrowseUrl = "../ckfinder/ckfinder.html";
+    config.filebrowserImageBrowseUrl = "../ckfinder/ckfinder.html?type=Images";
+    config.filebrowserImageUploadUrl = "../ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images";
 };
