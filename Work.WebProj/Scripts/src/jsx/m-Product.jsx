@@ -62,7 +62,7 @@ var GirdForm = React.createClass({
         //只在客戶端執行一次，當渲染完成後立即執行。當生命週期執行到這一步，元件已經俱有 DOM 所以我們可以透過 this.getDOMNode() 來取得 DOM 。
         //如果您想整和其他 Javascript framework ，使用 setTimeout, setInterval, 或者是發動 AJAX 請在這個方法中執行這些動作。
         this.queryGridData(1);
-        this.getAjaxInitData();//載入init資料
+        //this.getAjaxInitData();//載入init資料
     },
     componentWillReceiveProps:function(nextProps){
         //當元件收到新的 props 時被執行，這個方法在初始化時並不會被執行。使用的時機是在我們使用 setState() 並且呼叫 render() 之前您可以比對 props，舊的值在 this.props，而新值就從 nextProps 來。
@@ -93,18 +93,15 @@ var GirdForm = React.createClass({
             在元件更新之後執行。這個方法同樣不在初始化時執行，使用時機為當元件被更新之後需要執行一些操作。
         */
         //設定新增時的編輯器
-        if(prevState.edit_type==0 && this.state.edit_type==1){
-            CKEDITOR.replace( 'editor1', {});
-        }
     },
     componentWillUnmount:function(){
         //元件被從 DOM 卸載之前執行，通常我們在這個方法清除一些不再需要地物件或 timer。
     },
     handleSubmit: function(e) {
-        e.preventDefault();
-
-		this.state.fieldData.product_content = CKEDITOR.instances.editor1.getData();//編輯器      
+        e.preventDefault();  
         
+        this.state.fieldData.ProductStandard = this.refs.subGridForm.state.gridSubData;
+
         if(this.state.edit_type==1){
             jqPost(this.props.apiPathName,this.state.fieldData)
             .done(function(data, textStatus, jqXHRdata) {
@@ -212,13 +209,12 @@ var GirdForm = React.createClass({
         });
     },
     insertType:function(){
-        this.setState({edit_type:1,fieldData:{i_Lang:'zh-TW',product_content:this.state.temp_info}});
+        this.setState({edit_type:1,fieldData:{i_Lang:'zh-TW'}});
     },
     updateType:function(id){
         jqGet(this.props.apiPathName,{id:id})
         .done(function(data, textStatus, jqXHRdata) {
             this.setState({edit_type:2,fieldData:data.data});
-            CKEDITOR.replace( 'editor1', {});
         }.bind(this))
         .fail(function( jqXHR, textStatus, errorThrown ) {
             showAjaxError(errorThrown);
@@ -381,22 +377,6 @@ var GirdForm = React.createClass({
                         </div>
                     </div>
                     
-                    {/*<div className="form-group">
-                        <label className="col-xs-1 control-label">代表圖</label>
-                        <div className="col-xs-6">
-                            <MasterImageUpload 
-                            FileKind="Photo1" 
-                            MainId={fieldData.news_id}
-                            ParentEditType={this.state.edit_type}
-                            url_upload={gb_approot + 'Active/NewsData/axFUpload'}
-                            url_list={gb_approot+'Active/NewsData/axFList'}
-                            url_delete={gb_approot+'Active/NewsData/axFDelete'}
-                            url_sort={gb_approot+'Active/NewsData/axFSort'}
-                            />
-                        </div>
-                        <small className="help-inline col-xs-5 text-danger">限 1 張圖片</small>
-                    </div>*/}
-
                     <div className="form-group">
                         <label className="col-xs-1 control-label text-danger">標題</label>
                         <div className="col-xs-5">
@@ -450,14 +430,36 @@ var GirdForm = React.createClass({
                     </div>
 
                     <div className="form-group">
-                        <label className="col-xs-1 control-label">內容</label>
-                            <div className="col-xs-10">
-                                <textarea type="date" className="form-control" rows="3" id="editor1"
-                                    value={fieldData.product_content}
-                                    onChange={this.changeFDValue.bind(this,'product_content')} />
-                            </div>
-                    </div>              
+                        <label className="col-xs-1 control-label">類別介紹</label>
+                        <div className="col-xs-6">
+                            <textarea type="date" className="form-control" rows="4"
+                                value={fieldData.product_info}
+                                onChange={this.changeFDValue.bind(this,'product_info')}
+                                maxLength="250"/>
+                        </div>
+                        <div className="col-xs-5 text-danger">
+                            最多250字
+                        </div>
+                    </div>
 
+                    <div className="form-group">
+                        <label className="col-xs-1 control-label">注意事項</label>
+                        <div className="col-xs-6">
+                            <textarea type="date" className="form-control" rows="4"
+                                value={fieldData.product_note}
+                                onChange={this.changeFDValue.bind(this,'product_note')}
+                                maxLength="250"/>
+                        </div>
+                        <div className="col-xs-5 text-danger">
+                            最多250字
+                        </div>
+                    </div>      
+
+                    <SubGirdForm 
+                    MainId={fieldData.product_id} 
+                    handleSubmit={this.handleSubmit}
+                    ref="subGridForm" />                   
+                    
                     <div className="form-action">
                         <div className="col-xs-4 col-xs-offset-1">
                             <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
@@ -471,6 +473,313 @@ var GirdForm = React.createClass({
             outHtml=(<span>No Page</span>);
         }
 
+        return outHtml;
+    }
+});
+
+//明細列表
+var SubGirdForm = React.createClass({
+    mixins: [React.addons.LinkedStateMixin,SortableMixin], 
+    getInitialState: function() {  
+        return {
+            gridSubData:[],
+            refreshFileList:false,
+            newId:0
+        };  
+    },
+    getDefaultProps:function(){
+        return{ 
+            fdName:'fieldData',
+            gdName:'searchData',
+            apiSubPathName:gb_approot+'api/ProductStandard',
+            getIdPathName:gb_approot+'Active/Product/aj_GetNewID'
+        };
+    },
+    componentDidMount:function(){
+        this.queryGridData(0);
+        //Sortable.create(simpleList, { /* options */ });
+    },
+    handleSubmit: function(e) {
+        e.preventDefault();
+        this.props.handleSubmit(this.state.gridSubData,e);
+        return;
+    },
+    deleteSubmit:function(e){
+
+        if(!confirm('確定是否刪除?')){
+            return;
+        }
+
+        var ids = [];
+        for(var i in this.state.gridSubData){
+            if(this.state.gridSubData.rows[i].check_del){
+                ids.push('ids='+this.state.gridSubData[i].standard_id);
+            }
+        }
+
+        if(ids.length==0){
+            tosMessage(null,'未選擇刪除項',2);
+            return;
+        }
+
+        jqDelete(this.props.apiSubPathName+'?' + ids.join('&'),{})          
+        .done(function(data, textStatus, jqXHRdata) {
+            if(data.result){
+                tosMessage(null,'刪除完成',1);
+                this.queryGridData(0);
+            }else{
+                alert(data.message);
+            }
+        }.bind(this))
+        .fail(function( jqXHR, textStatus, errorThrown ) {
+            showAjaxError(errorThrown);
+        });
+    },
+    handleSearch:function(e){
+        e.preventDefault();
+        this.queryGridData(0);
+        return;
+    },
+    gridData:function(page){
+        var parms = {
+            main_id:this.props.MainId
+        };
+
+        return jqGet(this.props.apiSubPathName,parms);
+    },
+    queryGridData:function(page){
+        this.gridData(page)
+        .done(function(data, textStatus, jqXHRdata) {
+            this.setState({gridSubData:data});
+        }.bind(this))
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            showAjaxError(errorThrown);
+        });
+    },
+    changeFDValue:function(name,e){
+        this.setInputValue(this.props.fdName,name,e);
+    },
+    changeGDValue:function(name,e){
+        this.setInputValue(this.props.gdName,name,e);
+    },
+    setSubInputValue:function(i,name,e){
+        var obj = this.state.gridSubData[i];
+        if(e.target.value=='true'){
+            obj[name] = true;
+        }else if(e.target.value=='false'){
+            obj[name] = false;
+        }else{
+            obj[name] = e.target.value;
+        }
+        this.setState({fieldData:obj});
+    },
+    creatNewData:function(e){
+        var newState = this.state;
+        jqGet(this.props.getIdPathName,{})
+        .done(function(data, textStatus, jqXHRdata) {
+            newState.newId=data;
+            var newData = {
+                standard_id:this.state.newId,
+                product_id:this.props.MainId,
+                item_no:null,
+                appearance:null,
+                viscosity:0,
+                soften_point:0,
+                remark:null,
+                sort:0,
+                edit_state:0
+            };
+            newState.gridSubData.push(newData);
+            this.setState(newState);
+        }.bind(this));
+    },
+    deleteItem:function(i){
+        var newState = this.state;
+        var data = newState.gridSubData[i];
+
+        if(data.edit_state==0){
+            newState.gridSubData.splice(i,1);
+            this.setState(newState);
+        }else{
+            jqDelete(this.props.apiSubPathName+'?ids=' + data.standard_id,{})
+            .done(function(data, textStatus, jqXHRdata) {
+                if(data.result){
+                    newState.gridSubData.splice(i,1);
+                    this.setState(newState);
+                }else{
+                    tosMessage(null,data.message,1);
+                }
+            }.bind(this))
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                showAjaxError(errorThrown);
+            });
+        }
+    },
+    handleSort: function (evt) { 
+        var newState = this.state;
+        var n = newState.gridSubData.length;
+        for (var i in newState.gridSubData) {
+            newState.gridSubData[i].sort=i;//排序改成數字越小越前面
+            //n--;
+        }
+        newState.refreshFileList = true;
+        this.setState(newState);
+        this.setState({refreshFileList:false});
+        //this.reloadFileList();
+    },
+    sortableOptions: {
+        ref: "SortForm",
+        model:'gridSubData',
+        group: "shared",
+        handle: ".fa-bars",
+        ghostClass: "ghost"
+    },
+    reloadFileList:function (){
+        //console.log(this.refs.reloadFileList.length);
+        //this.refs.reloadFileList.reloadFileList();
+    },
+    render: function() {
+        var outHtml = null;
+        var fieldData = this.state.fieldData;
+        outHtml=
+        (
+            <div>
+                <div className="alert alert-warning">
+                    <button type="button" className="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+                    <ol>
+                        <li>點選 <strong className="fa-bars"></strong> 並<strong>拖曳</strong>，可修改排列順序。</li>
+                        <li>點選 <strong className="fa-times"></strong> 可刪除。</li>
+                    </ol>
+                </div>
+
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>刪除</th>
+                        <th className="text-danger text-center">Item no.(編號)<small className="help-inline">最多10字</small></th>
+                        <th className="text-danger text-center">Appearance(外觀)<small className="help-inline">最多50字</small></th>
+                        <th className="text-danger text-center">Viscosity(黏性)</th>
+                        <th className="text-danger text-center">Soften Point(軟化點)</th>
+                        <th className="text-center">Remark(備註)<small className="help-inline">最多200字</small></th>
+                    </tr>
+
+                    <tbody ref="SortForm">
+                    {
+                        this.state.gridSubData.map(function(itemData,i) {
+                            return <SubGirdField key={itemData.standard_id} ikey={i} fieldData={itemData}
+                            SetSubInputValue={this.setSubInputValue} 
+                            DeleteItem={this.deleteItem}
+                            refreshFileList={this.state.refreshFileList}
+                            />;
+                        }.bind(this))
+                    }
+                    </tbody>
+                </table>
+
+                <button className="btn" type="button" onClick={this.creatNewData.bind(this)}>新增規格</button>
+
+            </div>
+        );
+        return outHtml;
+    }
+});
+
+//明細表單
+var SubGirdField = React.createClass({
+    mixins: [React.addons.LinkedStateMixin], 
+    getInitialState: function() {  
+        return {
+            fieldData:this.props.fieldData        
+        };  
+    },
+    getDefaultProps:function(){
+        return{ 
+            subHtml:null
+
+        };
+    },
+    componentDidMount:function(){        
+        if(this.state.fieldData.edit_state==0){
+            this.state.fieldData.sort=this.props.ikey;//排序預設跟資料順序一樣
+        }
+    },
+    componentWillReceiveProps:function(nextProps){
+        this.state.fieldData = nextProps.fieldData;
+    },
+    changeFDValue:function(name,e){
+        this.props.SetSubInputValue(this.props.ikey,name,e);
+    },
+    deleteItem:function(i){
+        if(this.props.fieldData.edit_state==1){
+            if(confirm('此筆資料已存在，確認是否刪除?')){
+                this.props.DeleteItem(i);
+            }
+        }else{
+            this.props.DeleteItem(i);
+        }
+    },
+    render: function() {
+        var outHtml = null;
+        var fieldData = this.state.fieldData;
+
+        outHtml = (
+            <tr>
+                <td className="text-center"><i className="fa-bars text-muted draggable"></i></td>
+                <td className="text-center">
+                    <button className="btn-link text-danger" title="刪除" onClick={this.deleteItem.bind(this,this.props.ikey)}><i className="fa-times"></i></button>
+                </td>
+                <td>
+                    <div className="col-xs-12">
+                        <input type="text" 
+                        className="form-control"    
+                        value={fieldData.item_no}
+                        onChange={this.changeFDValue.bind(this,'item_no')}
+                        maxLength="10"
+                        required />                     
+                    </div>
+                </td>
+                <td>
+                    <div className="col-xs-12">
+                        <input type="text" 
+                        className="form-control"    
+                        value={fieldData.appearance}
+                        onChange={this.changeFDValue.bind(this,'appearance')}
+                        maxLength="50"
+                        required />                     
+                    </div>
+                </td>
+                <td>
+                    <div className="col-xs-12">
+                        <input type="number" 
+                        className="form-control"    
+                        value={fieldData.viscosity}
+                        onChange={this.changeFDValue.bind(this,'viscosity')}
+                        required />                     
+                    </div>
+                </td>
+                <td>
+                    <div className="col-xs-11">
+                        <input type="number" 
+                        className="form-control"    
+                        value={fieldData.soften_point}
+                        onChange={this.changeFDValue.bind(this,'soften_point')}
+                        required />             
+                    </div>
+                    <div className="col-xs-1">
+                        ℃
+                    </div>
+                </td>
+                <td className="text-left">
+                    <div className="col-xs-12">
+                        <input type="text" 
+                        className="form-control"    
+                        value={fieldData.remark}
+                        onChange={this.changeFDValue.bind(this,'remark')}
+                        maxLength="200" />                     
+                    </div>
+                </td>
+            </tr>
+        );
         return outHtml;
     }
 });

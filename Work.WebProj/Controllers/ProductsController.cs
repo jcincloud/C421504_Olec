@@ -38,6 +38,7 @@ namespace DotWeb.WebApp.Controllers
                 else
                 {
                     info.Product = db0.Product.Find(id);
+                    info.ProductStandard= db0.ProductStandard.Where(x => x.product_id == id).OrderBy(x => x.sort).ToList();
                     info.list = db0.Product.Where(x => x.i_Hide == false & x.i_Lang == System.Globalization.CultureInfo.CurrentCulture.Name).Select(x => new Plist() { p_id = x.product_id, p_name = x.product_name }).ToList();
                 }
                 ViewBag.ID = id;

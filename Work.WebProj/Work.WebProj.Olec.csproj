@@ -215,6 +215,7 @@
     <None Include="Content\bootstrap\js\npm.js" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\Api\NewsController.cs" />
+    <Compile Include="Controllers\Api\ProductStandardController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\Api\ProductController.cs" />
     <None Include="Controllers\Api\GetActionController.cs" />

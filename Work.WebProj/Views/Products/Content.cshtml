@@ -46,5 +46,28 @@
 <article>
     <header>HOT MELT ADHESIVE DIVISION</header>
     <h3>@Model.Product.product_name</h3>
-    @Html.Raw(Model.Product.product_content)
+    <table>
+        <caption>
+            @Model.Product.product_info
+        </caption>
+        <tr>
+            <th>Item no.</th>
+            <th>Appearance</th>
+            <th>Viscosity</th>
+            <th>Soften Point</th>
+            <th>Remark</th>
+        </tr>
+
+        @foreach (var detail in Model.ProductStandard)
+        {
+            <tr>
+                <td>@detail.item_no</td>
+                <td>@detail.appearance</td>
+                <td>@detail.viscosity</td>
+                <td>@detail.soften_point℃</td>
+                <td class="text-left">@detail.remark</td>
+            </tr>
+        }
+    </table>
+    <p class="tip">@Model.Product.product_note</p>
 </article>

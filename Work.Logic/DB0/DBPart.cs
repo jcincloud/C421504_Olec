@@ -213,6 +213,7 @@ namespace ProcCore.Business.DB0
     public class ProductInfo
     {
         public Product Product { get; set; }
+        public IList<ProductStandard> ProductStandard { get; set; }
         public IList<Plist> list { get; set; }
     }
     public class Plist
@@ -246,6 +247,10 @@ namespace ProcCore.Business.DB0
         public string product_name { get; set; }
         public int? product_category_id { get; set; }
         public string i_Lang { get; set; }
+    }
+    public class q_ProductStandard : QueryBase
+    {
+        public int? main_id { get; set; }
     }
     public class q_Customer : QueryBase
     {

@@ -1,5 +1,6 @@
 ﻿using DotWeb.CommSetup;
 using DotWeb.Controller;
+using ProcCore.Business;
 using ProcCore.Business.LogicConect;
 using ProcCore.HandleResult;
 using System;
@@ -38,8 +39,12 @@ namespace DotWeb.Areas.Active.Controllers
                 return defJSON(new
                 {
                     tmp_info = (string)open.getParmValue(ParmDefine.product_us)
-            });
+                });
             }
+        }
+        public int aj_GetNewID()
+        {
+            return getNewId(CodeTable.ProductStandard);
         }
         #endregion
 
