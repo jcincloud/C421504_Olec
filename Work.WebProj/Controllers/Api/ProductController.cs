@@ -75,9 +75,12 @@ namespace DotWeb.Api
             {
                 db0 = getDB0();
 
+
                 item = await db0.Product.FindAsync(md.product_id);
+
                 item.product_name = md.product_name;
-                item.product_content = md.product_content;
+                item.product_info = md.product_info;
+                item.product_note = md.product_note;
                 item.sort = md.sort;
                 item.i_Lang = md.i_Lang;
                 item.i_Hide = md.i_Hide;
@@ -85,6 +88,31 @@ namespace DotWeb.Api
                 item.i_UpdateUserID = this.UserId;
                 item.i_UpdateDateTime = DateTime.Now;
                 item.i_UpdateDeptID = this.departmentId;
+
+
+                var details = item.ProductStandard;
+
+                foreach (var detail in details)
+                {
+                    var md_detail = md.ProductStandard.First(x => x.standard_id == detail.standard_id);
+                    detail.item_no = md_detail.item_no;
+                    detail.appearance = md_detail.appearance;
+                    detail.viscosity = md_detail.viscosity;
+                    detail.soften_point = md_detail.soften_point;
+                    detail.remark = md_detail.remark;
+                    detail.sort = md_detail.sort;
+                    detail.i_Lang = md.i_Lang;//主檔語系變就跟著變
+                }
+
+                var add_detail = md.ProductStandard.Where(x => x.edit_state == EditState.Insert);
+                foreach (var detail in add_detail)
+                {
+                    detail.i_InsertUserID = this.UserId;
+                    detail.i_InsertDateTime = DateTime.Now;
+                    detail.i_InsertDeptID = this.departmentId;
+                    detail.i_Lang = md.i_Lang;//主檔語系變就跟著變
+                    details.Add(detail);
+                }
 
                 await db0.SaveChangesAsync();
                 r.result = true;
@@ -119,7 +147,18 @@ namespace DotWeb.Api
                 md.i_InsertUserID = this.UserId;
                 md.i_InsertDateTime = DateTime.Now;
                 md.i_InsertDeptID = this.departmentId;
-                //md.i_Lang = "zh-TW";
+
+
+                foreach (var detail in md.ProductStandard)
+                {
+                    detail.product_id = md.product_id;
+                    detail.i_InsertUserID = this.UserId;
+                    detail.i_InsertDateTime = DateTime.Now;
+                    detail.i_InsertDeptID = this.departmentId;
+                    detail.i_Lang = md.i_Lang;//主檔語系變就跟著變
+                    db0.ProductStandard.Add(detail);
+                }
+
 
                 db0.Product.Add(md);
                 await db0.SaveChangesAsync();
@@ -149,6 +188,12 @@ namespace DotWeb.Api
 
                 foreach (var id in ids)
                 {
+                    var getDetails = db0.ProductStandard.Where(x => x.product_id == id);
+                    foreach (var details in getDetails)
+                    {//先刪除底層產品規格
+                        db0.ProductStandard.Attach(details);
+                        db0.ProductStandard.Remove(details);
+                    }
                     item = new Product() { product_id = id };
                     db0.Product.Attach(item);
                     db0.Product.Remove(item);
