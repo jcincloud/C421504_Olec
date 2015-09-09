@@ -304,9 +304,7 @@ address {
 -----------------------------------------------------------------------*/
 table {
   border: none;
-  border-top: 3px solid #b3e02a;
   border-bottom: 3px solid #b3e02a;
-  background: #fff;
   margin-bottom: 20px; }
 
 tbody {

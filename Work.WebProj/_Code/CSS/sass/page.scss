@@ -351,7 +351,7 @@ div.editor {
 	ul {
 		li {
 			left: 1em;
-			margin-right: 1em; 
+			margin-right: 1em;
 			list-style: disc;
 		}
 		&[class*="cke"], &.list-no-icon {
@@ -380,7 +380,7 @@ div.editor {
 		ol {
 			li {
 				left: 2.2em;
-				margin-right: 2.2em; 
+				margin-right: 2.2em;
 				list-style: decimal;
 			}
 			&.list-styled {
@@ -439,3 +439,51 @@ div.editor {
 			border-top:1px dotted #ddd;
 		}
 	}
+
+//  產品規格列表樣式(同前台)- 富利源專用
+.format {
+	table, tbody, th, td {
+		border: none;
+	}
+	table {
+	    border-bottom: 3px solid #b3e02a;
+	    margin-bottom: 10px;
+	}
+
+	th, td {
+	    padding: 10px;
+	    border-bottom: 1px solid #b3e02a;
+	    border-right: 1px solid #b3e02a;
+
+	    line-height: 1.25;
+	    text-align: center;
+	    vertical-align: top;
+
+	    &:last-child {
+	        border-right: none;
+	    }
+	}
+	th {
+	    background: #94BC1B;
+	    color: #323232;
+	}
+	td {
+	    color: #254202;
+	    font-size: .875em;
+	    vertical-align: middle;
+	}
+
+	.btn-add {
+		font-size: 1.15em;
+		margin-bottom: 20px;
+		background: #5CB85C;
+
+		i {
+			content:"\f068";
+		}
+
+		&:hover {
+			background: darken(#5CB85C, 10%);
+		}
+	}
+}
