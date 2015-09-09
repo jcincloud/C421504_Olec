@@ -310,9 +310,7 @@ table {
   margin-bottom: 20px; }
 
 tbody {
-  border: none;
-  display: table-row-group;
-  border-left: 1px solid #fff; }
+  border: none; }
 
 th, td {
   padding: 10px;
@@ -351,3 +349,6 @@ caption {
 
 p {
   text-align: left; }
+
+tbody {
+  border-left: 1px solid #fff; }
