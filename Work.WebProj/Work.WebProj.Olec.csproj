@@ -957,6 +957,16 @@
     <Content Include="Views\ContactUs\ContactUs.en-US.cshtml" />
     <Content Include="Views\Index\Index.en-US.cshtml" />
     <Content Include="Views\Products\Content.en-US.cshtml" />
+    <Content Include="_Code\SysDoc\CKEdit.ogv" />
+    <Content Include="_Code\SysDoc\CKEdit.webm" />
+    <Content Include="_Code\SysDoc\News.ogv" />
+    <Content Include="_Code\SysDoc\News.webm" />
+    <Content Include="_Code\SysDoc\proAdd.ogv" />
+    <Content Include="_Code\SysDoc\proAdd.webm" />
+    <Content Include="_Code\SysDoc\proDel.ogv" />
+    <Content Include="_Code\SysDoc\proDel.webm" />
+    <Content Include="_Code\SysDoc\proEdit.ogv" />
+    <Content Include="_Code\SysDoc\proEdit.webm" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -1003,7 +1013,23 @@
     <Content Include="_Code\Maindoor\body\images\loginLogo.gif" />
     <Content Include="_Code\Maindoor\body\images\login_out.gif" />
     <Content Include="_Code\Maindoor\body\images\topBg.gif" />
+    <Content Include="_Code\SysDoc\CKEdit.html" />
+    <Content Include="_Code\SysDoc\CKEdit.mp4" />
+    <Content Include="_Code\SysDoc\CKEdit.swf" />
+    <Content Include="_Code\SysDoc\ckfinder.html" />
     <Content Include="_Code\SysDoc\Doc.xml" />
+    <Content Include="_Code\SysDoc\News.html" />
+    <Content Include="_Code\SysDoc\News.mp4" />
+    <Content Include="_Code\SysDoc\News.swf" />
+    <Content Include="_Code\SysDoc\proAdd.mp4" />
+    <Content Include="_Code\SysDoc\proAdd.swf" />
+    <Content Include="_Code\SysDoc\proDel.mp4" />
+    <Content Include="_Code\SysDoc\proDel.swf" />
+    <Content Include="_Code\SysDoc\ProductAdd.html" />
+    <Content Include="_Code\SysDoc\ProductDel.html" />
+    <Content Include="_Code\SysDoc\ProductEdit.html" />
+    <Content Include="_Code\SysDoc\proEdit.mp4" />
+    <Content Include="_Code\SysDoc\proEdit.swf" />
     <Content Include="_Code\SysUpFiles\CKfinderUpload\memo.txt" />
     <Content Include="_Code\SysUpFiles\memo.txt" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
