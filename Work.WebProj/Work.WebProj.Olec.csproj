@@ -799,6 +799,7 @@
     <Content Include="Scripts\app\shadowbox\README" />
     <Content Include="_Code\CSS\css\ie9-page-blessed1.css" />
     <Content Include="_Code\CSS\css\ie9-page.css" />
+    <Content Include="_Code\CSS\css\learn.css" />
     <Content Include="_Code\CSS\css\mobile.css" />
     <Content Include="_Code\CSS\css\page.css" />
     <Content Include="_Code\CSS\css\popup.css" />
