@@ -39,13 +39,16 @@
                     <div class="cover"><img src="@i.imgsrc" alt="NEWS圖"></div>
                     <h3>@i.news_title</h3>
                     <p>
-                        @if (i.news_intro.Length > 40)
+                        @if (i.news_intro != null)
                         {
-                            @i.news_intro.Substring(0, 40)<span>...</span>
-                        }
-                        else
-                        {
-                            @i.news_intro
+                            if (i.news_intro.Length > 40)
+                            {
+                                @i.news_intro.Substring(0, 40)<span>...</span>
+                            }
+                            else
+                            {
+                                @i.news_intro
+                            }
                         }
                     </p>
                     <a href="~/News/Content?id=@i.news_id" class="btn">READ MORE</a>
