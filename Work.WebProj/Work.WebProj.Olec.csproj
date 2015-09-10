@@ -207,6 +207,7 @@
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\UsersController.cs" />
     <Compile Include="Areas\Base\BaseAreaRegistration.cs" />
+    <Content Include="ckeditor\news_config.js" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\css\bootstrap.css" />
