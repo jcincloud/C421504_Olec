@@ -1,16 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <document>
+
   <file>
-    <sort>2</sort>
-    <name>申報進度與統計.docx</name>
-    <!--須和檔名相同*/-->
-    <memo>文件說明，補充說明2。</memo>
+    <sort>1</sort>
+    <name>productAdd.html</name>
+    <memo>【產品管理】操作教學影片(新增)</memo>
   </file>
 
   <file>
-    <name>資料庫使用說明.docx</name>
-    <sort>1</sort>
-    <memo>文件說明，補充說明1testtest。</memo>
+    <sort>2</sort>
+    <name>ProductEdit.html</name>
+    <memo>【產品資料】操作教學影片(修改)</memo>
+  </file>
+
+  <file>
+    <sort>3</sort>
+    <name>ProductDel.html</name>
+    <memo>【產品資料】操作教學影片(刪除)</memo>
+  </file>
+
+  <file>
+    <sort>4</sort>
+    <name>News.html</name>
+    <memo>【最新消息】操作教學影片(新增.修改.刪除)</memo>
+  </file>
+
+  <file>
+    <sort>5</sort>
+    <name>CKEdit.html</name>
+    <memo>【最新消息-編輯器】操作教學影片</memo>
   </file>
 
 </document>
