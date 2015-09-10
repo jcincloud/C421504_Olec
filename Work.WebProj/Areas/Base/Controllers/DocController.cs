@@ -1,17 +1,14 @@
-﻿using System;
+﻿using DotWeb.Controller;
+using ProcCore.Business.DB0;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Xml;
-using System.Xml.Linq;
-using ProcCore.WebCore;
-using ProcCore.JqueryHelp.JQGridScript;
-using ProcCore.ReturnAjaxResult;
-using Newtonsoft.Json;
 
-namespace DotWeb.Areas.Sys_Base.Controllers
+namespace DotWeb.Areas.Base.Controllers
 {
-    public class DocController : BaseController
+    public class DocController : AdminController
     {
         public RedirectResult Index()
         {

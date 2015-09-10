@@ -1,22 +1,25 @@
-﻿@model  IEnumerable<DotWeb.DocInfo>
+﻿@model  IEnumerable<ProcCore.Business.DB0.DocInfo>
 
 @using DotWeb;
+@{
+    Layout = "~/Views/Shared/Manage/RLayout.cshtml";
+    ViewBag.MenuName = "系統設定";
+    ViewBag.Caption = "教學影片";
+}
 @section IncludeScript{
-    @Html.Partial("Manage/includeScript_Comm")
+    @Html.Partial("Manage/JSGlobalVar")
+    <script src="~/Scripts/build/comminc.js"></script>
     <style>
-        h3
-        {
+        h3 {
             padding: 4px 2px;
             text-align: left;
         }
 
-        ul
-        {
+        ul {
             overflow: hidden;
         }
 
-        li.ui-state-default
-        {
+        li.ui-state-default {
             float: left;
             width: 86px;
             margin-right: -1px;
@@ -24,18 +27,15 @@
             font-size: .9em;
         }
 
-        li.title
-        {
+        li.title {
             width: 250px;
         }
 
-        li.description
-        {
+        li.description {
             width: 390px;
         }
 
-        dl
-        {
+        dl {
             margin-top: -1px;
             padding-bottom: 50px;
             border: 1px solid #A5CEE7;
@@ -44,8 +44,7 @@
             overflow: hidden;
         }
 
-        dt
-        {
+        dt {
             float: left;
             width: 357px;
             height: 28px;
@@ -56,8 +55,7 @@
             clear: both;
         }
 
-            dt em
-            {
+            dt em {
                 display: inline-block;
                 width: 86px;
                 margin-right: 5px;
@@ -66,8 +64,7 @@
                 border-right: 1px solid #A5CEE7;
             }
 
-        dd
-        {
+        dd {
             height: 28px;
             margin: -1px -1px 0 0;
             padding: 0 5px;
@@ -78,11 +75,14 @@
         }
     </style>
 }
-@section menu{
-    @Html.Raw(Session["MenuHtmlString"].ToString())
+@section sidebar{
+    @Html.Partial("Manage/vucMenu")
 }
 
-<h3 class="ui-widget-header ui-corner-top">@Html.Lang("t1")</h3>
+<ul class="breadcrumb">
+    <li><i class="fa-list-alt"></i>@ViewBag.MenuName</li>
+</ul>
+<h4 class="title">@ViewBag.Caption</h4>
 <ul>
     <li class="ui-state-default">@Html.Lang("t2")</li>
     <li class="ui-state-default title">@Html.Lang("t3")</li>
@@ -91,7 +91,7 @@
 
 <dl>
     @foreach (DocInfo doc in Model)
-    { 
+    {
         <dt><em>@doc.Sort</em><a href="@doc.Link" target="new">@doc.Name</a></dt>
         <dd>@doc.Momo</dd>
     }

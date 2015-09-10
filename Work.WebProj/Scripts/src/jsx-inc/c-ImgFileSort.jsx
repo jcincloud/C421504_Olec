@@ -19,9 +19,11 @@ var MasterImageUpload = React.createClass({
 		};
 	},
 	componentDidUpdate:function(prevProps, prevState){
-		// if(this.props.ParentEditType==2 && prevProps.ParentEditType){
-		// 	this.createFileUpLoadObject();
-		// }
+		if(this.props.ParentEditType==2 && prevProps.ParentEditType==1){
+			if(this.props.uploader==null){
+				this.createFileUpLoadObject();
+			}
+		}
 	},
 	componentDidMount:function(){
 		if(this.props.MainId>0){
