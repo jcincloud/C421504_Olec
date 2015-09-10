@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+// import
+// ------------------------------------------------------------
+@import "helper/var";
+@import "helper/mixins";
+
+
+// == footer
+#footer {
+    .list-inline li {
+        font-size: em(18px);
+    }
+}
+
+// == contact
+.#{nth($pages, 5)} main {
+    dt {
+        width: 80px;
+    }
+    dd {
+        min-width: 340px;
+        max-width: 340px;
+    }
+}

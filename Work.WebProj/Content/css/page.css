@@ -909,7 +909,8 @@ figure {
 .ContactUs main dl {
   border-top: 3px solid #94BC1B;
   border-bottom: 3px solid #94BC1B;
-  margin: 20px 0 0 20px; }
+  margin: 20px 0 0 20px;
+  max-width: 435px; }
 .ContactUs main dt {
   clear: left;
   border-top: 1px solid #c3e756;

@@ -225,6 +225,9 @@
     <Compile Include="Controllers\Api\ProductStandardController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\Api\ProductController.cs" />
+    <Content Include="Content\css\en.css" />
+    <Content Include="Content\sass\en.scss" />
+    <Content Include="Content\sass\helper\mixins\_var.scss" />
     <None Include="Controllers\Api\GetActionController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\IndexController.cs" />

@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 // common 通用
+@import "mixins/var";  // 與 var 變數相關
 @import "mixins/size";
 @import "mixins/arrow";
 @import "mixins/position";
@@ -20,47 +21,19 @@
 @import "mixins/prefix-gradient";
 
 
-// 實用 function
+// 實用
 // -----------------------------------------------------------------
+
 // 算寬度百分比
 @function cp($target, $container: $min-width) {
     @return ($target / $container) * 100%;
 }
 
-// colors
-@function color($key) {
-    @return map-get($color, $key);
-}
-
-// z-index
-@function z($key) {
-    @return map-get($z-index, $key);
-}
-
-// 範例 background: m-get($color-theme, 'default', 'background');
-@function m-get($map, $keys...) {
-    @each $key in $keys {
-        $map: map-get($map, $key);
+// 取第n個之後的pages值
+@function page($item) {
+    $page: ();
+    @for $i from $item through length($pages) {
+        $page: append($page, nth($pages, $i));
     }
-    @return $map;
-}
-
-// 範例 background: m-set($color-theme, 'default', 'background', #080808);
-@function m-set($map, $keys.../*, $value*/) {
-    $map-list: ($map,);
-    $result: null;
-
-    @if length($keys) == 2 {
-        @return map-merge($map, (nth($keys, 1): nth($keys, -1)));
-    }
-
-    @for $i from 1 through length($keys) - 2 {
-        $map-list: append($map-list, map-get(nth($map-list, -1), nth($keys, $i)));
-    }
-
-    @for $i from length($map-list) through 1 {
-        $result: map-merge(nth($map-list, $i), (nth($keys, $i): if($i == length($map-list), nth($keys, -1), $result)));
-    }
-
-    @return $result;
+    @return $page;
 }
