@@ -724,6 +724,7 @@
     <Content Include="Scripts\GoogleAnalytics.js" />
     <Content Include="Scripts\app\jquery.flexslider-min.js" />
     <Content Include="Scripts\app\jquery.lazyloadxt.min.js" />
+    <Content Include="Scripts\jquery\jquery-1.11.3.min.js" />
     <Content Include="Scripts\jquery\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery\jquery.cookie.js" />
