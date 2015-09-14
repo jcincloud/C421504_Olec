@@ -122,12 +122,12 @@ namespace DotWeb.Areas.Base.Controllers
 
             //SiteMaps.ReleaseSiteMap();
 
-            if (isTablet)
-            {
-                getLoginResult.url = Url.Content(CommWebSetup.ManageTabletCTR); //是行動裝置
-            }
-            else
-            {
+            //if (isTablet)
+            //{
+            //    getLoginResult.url = Url.Content(CommWebSetup.ManageTabletCTR); //是行動裝置
+            //}
+            //else
+            //{
                 //不是行動裝置
                 var get_user_roles_id = item.Roles.Select(x => x.RoleId);
 
@@ -143,7 +143,7 @@ namespace DotWeb.Areas.Base.Controllers
                 {
                     getLoginResult.url = Url.Content("~/Active/Stock");
                 }
-            }
+            //}
 
             Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_UserName, item.UserName));
             Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_LastLogin, DateTime.Now.ToString()));

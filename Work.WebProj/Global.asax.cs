@@ -20,10 +20,10 @@ namespace DotWeb.AppStart
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
-            DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("tablet")
-            {
-                ContextCondition = (x => (new WebInfo()).isTablet()) 
-            });
+            //DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("tablet")
+            //{
+            //    ContextCondition = (x => (new WebInfo()).isTablet()) 
+            //});
 
             DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("en-US")
             {
