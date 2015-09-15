@@ -107,6 +107,8 @@ namespace DotWeb.Api
                 var add_detail = md.ProductStandard.Where(x => x.edit_state == EditState.Insert);
                 foreach (var detail in add_detail)
                 {
+                    detail.standard_id = GetNewId(ProcCore.Business.CodeTable.ProductStandard);
+                    detail.product_id = md.product_id;
                     detail.i_InsertUserID = this.UserId;
                     detail.i_InsertDateTime = DateTime.Now;
                     detail.i_InsertDeptID = this.departmentId;
@@ -151,6 +153,7 @@ namespace DotWeb.Api
 
                 foreach (var detail in md.ProductStandard)
                 {
+                    detail.standard_id = GetNewId(ProcCore.Business.CodeTable.ProductStandard);
                     detail.product_id = md.product_id;
                     detail.i_InsertUserID = this.UserId;
                     detail.i_InsertDateTime = DateTime.Now;

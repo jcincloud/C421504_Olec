@@ -397,7 +397,6 @@
     <Content Include="Content\sass\component\_tooltip.scss" />
     <Content Include="Content\sass\helper\mixins\_form.scss" />
     <Content Include="Content\sass\helper\mixins\_grid.scss" />
-    <Content Include="Content\sass\helper\mixins\_map-get.scss" />
     <Content Include="Content\sass\helper\mixins\_media.scss" />
     <Content Include="Content\sass\helper\mixins\_prefix-animation.scss" />
     <Content Include="Content\sass\helper\mixins\_prefix-gradient.scss" />
