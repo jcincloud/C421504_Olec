@@ -19,9 +19,10 @@ namespace ProcCore.Business.DB0
         public int product_id { get; set; }
         public string item_no { get; set; }
         public string appearance { get; set; }
-        public Nullable<int> viscosity { get; set; }
-        public Nullable<int> soften_point { get; set; }
+        public string viscosity { get; set; }
+        public string soften_point { get; set; }
         public string remark { get; set; }
+        public Nullable<int> sort { get; set; }
         public bool i_Hide { get; set; }
         public string i_InsertUserID { get; set; }
         public Nullable<int> i_InsertDeptID { get; set; }
@@ -30,7 +31,6 @@ namespace ProcCore.Business.DB0
         public Nullable<int> i_UpdateDeptID { get; set; }
         public Nullable<System.DateTime> i_UpdateDateTime { get; set; }
         public string i_Lang { get; set; }
-        public Nullable<int> sort { get; set; }
     
     	[JsonIgnore]
         public virtual Product Product { get; set; }

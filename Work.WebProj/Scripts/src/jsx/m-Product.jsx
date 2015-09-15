@@ -583,8 +583,8 @@ var SubGirdForm = React.createClass({
                 product_id:this.props.MainId,
                 item_no:null,
                 appearance:null,
-                viscosity:0,
-                soften_point:0,
+                viscosity:null,
+                soften_point:null,
                 remark:null,
                 sort:0,
                 edit_state:0
@@ -660,8 +660,8 @@ var SubGirdForm = React.createClass({
                         <th>刪除</th>
                         <th className="text-danger text-center">* Item no. <small>(最多10字)</small></th>
                         <th className="text-danger text-center">* Appearance <small>(最多50字)</small></th>
-                        <th className="text-danger text-center">* Viscosity</th>
-                        <th className="text-danger text-center">* Soften Point</th>
+                        <th className="text-danger text-center">Viscosity <small>(最多50字)</small></th>
+                        <th className="text-danger text-center">Soften Point <small>(最多50字)</small></th>
                         <th className="text-center">Remark <small>(最多200字)</small></th>
                     </tr>
 
@@ -746,17 +746,17 @@ var SubGirdField = React.createClass({
                     required />
                 </td>
                 <td>
-                    <input type="number"
+                    <input type="text"
                     className="form-control"
                     value={fieldData.viscosity}
                     onChange={this.changeFDValue.bind(this,'viscosity')}
-                    required />
+                    maxLength="50"/>
                 </td>
                 <td>
-                    <input type="number"
+                    <input type="text"
                     value={fieldData.soften_point}
                     onChange={this.changeFDValue.bind(this,'soften_point')}
-                    required /> ℃
+                    maxLength="50" /> ℃
                 </td>
                 <td className="text-left">
                     <input type="text"
