@@ -225,6 +225,9 @@
     <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\Api\ProductController.cs" />
     <Content Include="Content\css\en.css" />
+    <Content Include="Content\images\index\banner1_en.jpg" />
+    <Content Include="Content\images\index\banner2_en.jpg" />
+    <Content Include="Content\images\index\banner3_en.jpg" />
     <Content Include="Content\sass\en.scss" />
     <Content Include="Content\sass\helper\mixins\_var.scss" />
     <None Include="Controllers\Api\GetActionController.cs" />

@@ -1,6 +1,13 @@
 #footer .list-inline li {
   font-size: 1.125em; }
 
+.index #banner .i1 {
+  background-image: url(../images/index/banner1_en.jpg); }
+.index #banner .i2 {
+  background-image: url(../images/index/banner2_en.jpg); }
+.index #banner .i3 {
+  background-image: url(../images/index/banner3_en.jpg); }
+
 .marquee {
   height: 100px; }
 

@@ -13,6 +13,15 @@
     }
 }
 
+// == index
+.index {
+    @for $i from 1 through 3 {
+        #banner .i#{$i} {
+            background-image: url(../images/index/banner#{$i}_en.jpg);
+        }
+    }
+}
+
 // == page
 .marquee {
     height: 100px;
