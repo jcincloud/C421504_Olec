@@ -1,6 +1,9 @@
 #footer .list-inline li {
   font-size: 1.125em; }
 
+.marquee {
+  height: 100px; }
+
 .ContactUs main dt {
   width: 80px; }
 .ContactUs main dd {
