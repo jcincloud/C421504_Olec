@@ -180,7 +180,7 @@ namespace DotWeb.Areas.Base.Controllers
             }
             finally
             {
-                //db0.Dispose();
+                db0.Dispose();
             }
             return defJSON(getLoginResult);
         }
