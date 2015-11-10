@@ -48,9 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKFinder, Version=2.4.1.2663, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>ckfinder\bin\Release\CKFinder.dll</HintPath>
+    <Reference Include="CKFinder">
+      <HintPath>..\Core.Dll\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,7 +100,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Web.Administration.7.0.0.0\lib\net20\Microsoft.Web.Administration.dll</HintPath>
@@ -198,13 +196,10 @@
     <Compile Include="Areas\Active\Controllers\NewsDataController.cs" />
     <Compile Include="Areas\Active\Controllers\ProductController.cs" />
     <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
-    <None Include="Areas\Base\Controllers\ExcelReportController.cs" />
     <Compile Include="Areas\Base\Controllers\DocController.cs" />
     <Compile Include="Areas\Base\Controllers\LoginController.cs" />
     <Content Include="Areas\Active\Views\NewsData\Main.cshtml" />
     <Content Include="Areas\Active\Views\Product\Main.cshtml" />
-    <None Include="Areas\Base\Controllers\ReportChartController.cs" />
-    <Compile Include="Areas\Base\Controllers\ReportToPdfController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\UsersController.cs" />
     <Compile Include="Areas\Base\BaseAreaRegistration.cs" />
@@ -962,16 +957,16 @@
     <Content Include="Views\ContactUs\ContactUs.en-US.cshtml" />
     <Content Include="Views\Index\Index.en-US.cshtml" />
     <Content Include="Views\Products\Content.en-US.cshtml" />
-    <Content Include="_Code\SysDoc\CKEdit.ogv" />
-    <Content Include="_Code\SysDoc\CKEdit.webm" />
-    <Content Include="_Code\SysDoc\News.ogv" />
-    <Content Include="_Code\SysDoc\News.webm" />
-    <Content Include="_Code\SysDoc\proAdd.ogv" />
-    <Content Include="_Code\SysDoc\proAdd.webm" />
-    <Content Include="_Code\SysDoc\proDel.ogv" />
-    <Content Include="_Code\SysDoc\proDel.webm" />
-    <Content Include="_Code\SysDoc\proEdit.ogv" />
-    <Content Include="_Code\SysDoc\proEdit.webm" />
+    <None Include="_Code\SysDoc\CKEdit.ogv" />
+    <None Include="_Code\SysDoc\CKEdit.webm" />
+    <None Include="_Code\SysDoc\News.ogv" />
+    <None Include="_Code\SysDoc\News.webm" />
+    <None Include="_Code\SysDoc\proAdd.ogv" />
+    <None Include="_Code\SysDoc\proAdd.webm" />
+    <None Include="_Code\SysDoc\proDel.ogv" />
+    <None Include="_Code\SysDoc\proDel.webm" />
+    <None Include="_Code\SysDoc\proEdit.ogv" />
+    <None Include="_Code\SysDoc\proEdit.webm" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -1019,29 +1014,28 @@
     <Content Include="_Code\Maindoor\body\images\login_out.gif" />
     <Content Include="_Code\Maindoor\body\images\topBg.gif" />
     <Content Include="_Code\SysDoc\CKEdit.html" />
-    <Content Include="_Code\SysDoc\CKEdit.mp4" />
-    <Content Include="_Code\SysDoc\CKEdit.swf" />
+    <None Include="_Code\SysDoc\CKEdit.mp4" />
+    <None Include="_Code\SysDoc\CKEdit.swf" />
     <Content Include="_Code\SysDoc\ckfinder.html" />
     <Content Include="_Code\SysDoc\Doc.xml" />
     <Content Include="_Code\SysDoc\News.html" />
-    <Content Include="_Code\SysDoc\News.mp4" />
-    <Content Include="_Code\SysDoc\News.swf" />
-    <Content Include="_Code\SysDoc\proAdd.mp4" />
-    <Content Include="_Code\SysDoc\proAdd.swf" />
-    <Content Include="_Code\SysDoc\proDel.mp4" />
-    <Content Include="_Code\SysDoc\proDel.swf" />
+    <None Include="_Code\SysDoc\News.mp4" />
+    <None Include="_Code\SysDoc\News.swf" />
+    <None Include="_Code\SysDoc\proAdd.mp4" />
+    <None Include="_Code\SysDoc\proAdd.swf" />
+    <None Include="_Code\SysDoc\proDel.mp4" />
+    <None Include="_Code\SysDoc\proDel.swf" />
     <Content Include="_Code\SysDoc\ProductAdd.html" />
     <Content Include="_Code\SysDoc\ProductDel.html" />
     <Content Include="_Code\SysDoc\ProductEdit.html" />
-    <Content Include="_Code\SysDoc\proEdit.mp4" />
-    <Content Include="_Code\SysDoc\proEdit.swf" />
+    <None Include="_Code\SysDoc\proEdit.mp4" />
+    <None Include="_Code\SysDoc\proEdit.swf" />
     <Content Include="_Code\SysUpFiles\CKfinderUpload\memo.txt" />
     <Content Include="_Code\SysUpFiles\memo.txt" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <TypeScriptCompile Include="GitTest\play.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\commangular.ts" />
     <TypeScriptCompile Include="Scripts\src\ts-controller\login.ts" />
     <TypeScriptCompile Include="Scripts\src\ts-controller\rolesCtr.ts" />

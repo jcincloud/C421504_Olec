@@ -19,6 +19,8 @@ namespace DotWeb.Areas.Base.Controllers
     public class LoginController : WebUserController
     {
         private ApplicationUserManager _userManager;
+        private ApplicationSignInManager _signInManager;
+
         private IAuthenticationManager AuthenticationManager
         {
             get
@@ -37,6 +39,18 @@ namespace DotWeb.Areas.Base.Controllers
                 _userManager = value;
             }
         }
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
         public ActionResult Main()
         {
             HttpContext.GetOwinContext().Authentication.SignOut();
@@ -110,43 +124,34 @@ namespace DotWeb.Areas.Base.Controllers
             #endregion
 
             #region 帳密碼檢查
-            var item = await userManager.FindAsync(model.account, model.password);
-            if (item == null)
+            var result = await SignInManager.PasswordSignInAsync(model.account, model.password, model.rememberme, shouldLockout: false);
+
+            if (result == SignInStatus.Failure)
             {
                 getLoginResult.result = false;
                 getLoginResult.message = Resources.Res.Login_Err_Password;
                 return defJSON(getLoginResult);
             }
-            await SignInAsync(item, model.rememberme);
+            var item = await userManager.FindByNameAsync(model.account);
             getLoginResult.result = true;
 
-            //SiteMaps.ReleaseSiteMap();
+            var get_user_roles_id = item.Roles.Select(x => x.RoleId);
 
-            //if (isTablet)
-            //{
-            //    getLoginResult.url = Url.Content(CommWebSetup.ManageTabletCTR); //是行動裝置
-            //}
-            //else
-            //{
-                //不是行動裝置
-                var get_user_roles_id = item.Roles.Select(x => x.RoleId);
+            ApplicationDbContext context = ApplicationDbContext.Create();
+            var roleManage = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var get_user_roles_name = roleManage.Roles.Where(x => get_user_roles_id.Contains(x.Id)).Select(x => x.Name);
 
-                ApplicationDbContext context = ApplicationDbContext.Create();
-                var roleManage = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-                var get_user_roles_name = roleManage.Roles.Where(x => get_user_roles_id.Contains(x.Id)).Select(x => x.Name);
-
-                if (get_user_roles_name.Contains("Admins") || get_user_roles_name.Contains("Managers"))
-                {
-                    getLoginResult.url = Url.Content(CommWebSetup.ManageDefCTR);
-                }
-                else
-                {
-                    getLoginResult.url = Url.Content("~/Active/Stock");
-                }
-            //}
+            if (get_user_roles_name.Contains("Admins") || get_user_roles_name.Contains("Managers"))
+            {
+                getLoginResult.url = Url.Content(CommWebSetup.ManageDefCTR);
+            }
+            else
+            {
+                getLoginResult.url = Url.Content(CommWebSetup.ManageDefCTR);
+            }
 
             Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_UserName, item.UserName));
-            Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_LastLogin, DateTime.Now.ToString()));
+            Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_LastLogin, DateTime.Now.ToString("yyyy-MM-dd")));
             #endregion
 
             //語系使用
@@ -161,7 +166,7 @@ namespace DotWeb.Areas.Base.Controllers
                 var item_department = await db.Department.FindAsync(item.department_id);
 
                 Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_DepartmentId, item.department_id.ToString()));
-                Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_DepartmentName, item_department.department_name));
+                //Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_DepartmentName, item_department.department_name));
                 Response.Cookies.Add(new HttpCookie("user_login", Server.UrlEncode(EncryptString.desEncryptBase64("N"))));
                 var item_lang = db.i_Lang
                     .Where(x => x.lang == WebLang.Value)
@@ -177,10 +182,6 @@ namespace DotWeb.Areas.Base.Controllers
                 getLoginResult.result = false;
                 getLoginResult.message = ex.Message;
                 return defJSON(getLoginResult);
-            }
-            finally
-            {
-                db0.Dispose();
             }
             return defJSON(getLoginResult);
         }
