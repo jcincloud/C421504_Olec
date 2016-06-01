@@ -10,14 +10,14 @@
     <script>
         var swiper = new Swiper('#slider', {
             pagination: '.swiper-pagination',
-            slidesPerView: 2,
-            paginationClickable: true,
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
+            speed: 1000,
+            slidesPerView: 'auto',
+            slidesPerGroup: 1,
+            slidesPerColumnFill: 'row',
             spaceBetween: 70,
-            // loop: true,
-            autoplay: 5000,
-            autoplayDisableOnInteraction: false
+            autoplayDisableOnInteraction: false,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev'
         });
     </script>
 }
