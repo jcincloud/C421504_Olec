@@ -33,7 +33,7 @@ namespace DotWeb.Controllers
                     item.imgsrc = GetImg(item.news_id, "Photo1", "News", "News");//顯示列表圖
                 }
             }
-            return View(news);
+            return View("Index.zh-TW",news);
         }
         public ActionResult en_US()
         {
@@ -51,7 +51,7 @@ namespace DotWeb.Controllers
                     item.imgsrc = GetImg(item.news_id, "Photo1", "News", "News");//顯示列表圖
                 }
             }
-            return View(news);
+            return View("Index.en-US",news);
         }
         public ActionResult Index()
         {
