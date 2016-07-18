@@ -739,7 +739,7 @@
     <Content Include="Scripts\app\toastr.js" />
     <Content Include="Scripts\react\react.min.js" />
     <Content Include="Scripts\require.js" />
-    <Content Include="Views\Index\Index.zh-TW.cshtml" />
+    <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Scripts\src\ts-controller\tmp\modalEditFuel.html" />
     <Content Include="Scripts\src\ts-controller\tmp\modalQueryEquipment.html" />
     <Content Include="Scripts\angular\plugging\angular-file-upload\angular-file-upload-html5-shim.js" />
@@ -957,7 +957,6 @@
     <Content Include="Views\ContactUs\ContactUs.en-US.cshtml" />
     <Content Include="Views\Index\Index.en-US.cshtml" />
     <Content Include="Views\Products\Content.en-US.cshtml" />
-    <Content Include="Views\Shared\Layout.zh-TW.cshtml" />
     <None Include="_Code\SysDoc\CKEdit.ogv" />
     <None Include="_Code\SysDoc\CKEdit.webm" />
     <None Include="_Code\SysDoc\News.ogv" />

@@ -16,17 +16,7 @@ namespace DotWeb.AppStart
             ).DataTokens["UseNamespaceFallback"] = false;
 
             //-----------------------------------------------------
-            routes.MapRoute(
-            name: "zh_TW",
-            url: "zh_TW",
-            defaults: new { controller = "Index", action = "zh_TW" }
-            ).DataTokens["UseNamespaceFallback"] = false;
 
-            routes.MapRoute(
-            name: "en_US",
-            url: "en_US",
-            defaults: new { controller = "Index", action = "en_US" }
-            ).DataTokens["UseNamespaceFallback"] = false;
             routes.MapRoute(
             name: "Default",
             url: "{controller}/{action}/{id}",
